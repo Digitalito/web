@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital | Redes Sociales</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Versión actualizada de Font Awesome 6.5.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4800ff;
+            --primary-light: #6a33ff;
+            --primary-dark: #3300cc;
+            --accent: #b300ff;
+            --accent-light: #cc33ff;
+            --accent-blue: #00aaff;
+            --text: #ffffff;
+            --text-secondary: #e0d6ff;
+            --background: #0c0e1d;
+            --card-bg: rgba(23, 17, 52, 0.7);
+            --star-color: rgba(255, 255, 255, 0.8);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
+                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--star-color);
+            border-radius: 50%;
+            animation: 
+                twinkle calc(var(--duration) * 1s) infinite ease-in-out,
+                move calc(var(--move-duration) * 1s) infinite linear;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(var(--move-x), var(--move-y)); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 25px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-img-container {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px var(--primary);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover {
+            box-shadow: 0 0 60px var(--primary-light);
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .profile-name {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin: 20px 0 15px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            letter-spacing: -0.5px;
+            animation: fadeIn 0.8s ease-out forwards, shine 4s infinite ease-in-out;
+            opacity: 0;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes shine {
+            0%, 100% { 
+                background-position: 0% 50%;
+                text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            }
+            50% { 
+                background-position: 100% 50%;
+                text-shadow: 0 0 25px rgba(179, 0, 255, 0.6);
+            }
+        }
+
+        .profile-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            margin-bottom: 60px;
+        }
+
+        .social-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .social-card:nth-child(1) { animation-delay: 0.1s; }
+        .social-card:nth-child(2) { animation-delay: 0.2s; }
+        .social-card:nth-child(3) { animation-delay: 0.3s; }
+        .social-card:nth-child(4) { animation-delay: 0.4s; }
+        .social-card:nth-child(5) { animation-delay: 0.1s; }
+        .social-card:nth-child(6) { animation-delay: 0.2s; }
+        .social-card:nth-child(7) { animation-delay: 0.3s; }
+        .social-card:nth-child(8) { animation-delay: 0.4s; }
+
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .social-icon {
+            font-size: 3.2rem;
+            margin-bottom: 22px;
+            transition: transform 0.4s ease;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            height: 64px;
+        }
+
+        /* Estilo específico para el icono de X/Twitter */
+        .social-icon .fa-x-twitter {
+            color: white;
+            font-size: 2.8rem;
+        }
+
+        .social-icon-img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .social-card:hover .social-icon {
+            transform: scale(1.2);
+        }
+
+        .social-name {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .social-username {
+            font-size: 1.15rem;
+            opacity: 0.85;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .social-btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1.05rem;
+            letter-spacing: 0.5px;
+            box-shadow: 0 5px 20px rgba(72, 0, 255, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(72, 0, 255, 0.6);
+        }
+
+        .social-btn:hover::before {
+            opacity: 1;
+        }
+
+        .social-btn i {
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 1.05rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2.8rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .social-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .profile-img-container {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .social-card {
+                padding: 25px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 2.3rem;
+                line-height: 1.2;
+                margin-top: 15px;
+                margin-bottom: 10px;
+                letter-spacing: -0.3px;
+                background-size: 200% 200%;
+            }
+            
+            .profile-subtitle {
+                font-size: 1rem;
+                margin-bottom: 20px;
+                padding: 0 15px;
+            }
+            
+            .social-btn {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+            
+            .social-icon .fa-x-twitter {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-img-container">
+                    <img src="https://i.imgur.com/z6rPcHq.png" alt="Digital" class="profile-img">
+                </div>
+            </div>
+            <h1 class="profile-name">Digital</h1>
+            <p class="profile-subtitle">
+                Productor de contenido e <span class="highlight">influencer</span> que ofrece videos en formato largo y corto sobre <span class="highlight">videojuegos</span>, como <span class="highlight">Minecraft</span>. También hago <span class="highlight">directos</span> en <span class="highlight">Twitch</span> y <span class="highlight">Kick</span>.
+            </p>
+        </header>
+        
+        <div class="social-grid">
+            <!-- YouTube -->
+            <div class="social-card">
+                <div class="social-icon" style="color: #FF0000;">
+                    <i class="fab fa-youtube"></i>
+                </div>
+                <h2 class="social-name">YouTube</h2>
+                <p class="social-username">TutoDigital</p>
+                <a href="https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1" target="_blank" class="social-btn">
+                    <i class="fab fa-youtube"></i> Visitar Canal
+                </a>
+            </div>
+            
+            <!-- TikTok -->
+            <div class="social-card">
+                <div class="social-icon" style="color: #69C9D0;">
+                    <i class="fab fa-tiktok"></i>
+                </div>
+                <h2 class="social-name">TikTok</h2>
+                <p class="social-username">@tutodigital_</p>
+                <a href="https://www.tiktok.com/@tutodigital_" target="_blank" class="social-btn">
+                    <i class="fab fa-tiktok"></i> Seguir
+                </a>
+            </div>
+            
+            <!-- Instagram -->
+            <div class="social-card">
+                <div class="social-icon" style="color: #E1306C;">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h2 class="social-name">Instagram</h2>
+                <p class="social-username">@TutoDigital_</p>
+                <a href="https://www.instagram.com/TutoDigital_/" target="_blank" class="social-btn">
+                    <i class="fab fa-instagram"></i> Seguir
+                </a>
+            </div>
+            
+            <!-- Twitter/X - Solución definitiva -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <i class="fab fa-x-twitter"></i>
+                </div>
+                <h2 class="social-name">X (Twitter)</h2>
+                <p class="social-username">@tutodigital_</p>
+                <a href="https://twitter.com/tutodigital_" target="_blank" class="social-btn">
+                    <i class="fab fa-x-twitter"></i> Seguir
+                </a>
+            </div>
+            
+            <!-- Discord -->
+            <div class="social-card">
+                <div class="social-icon" style="color: #5865F2;">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h2 class="social-name">Discord</h2>
+                <p class="social-username">Comunidad Digital Galaxy</p>
+                <a href="https://dsc.gg/digitalgalaxy/" target="_blank" class="social-btn">
+                    <i class="fab fa-discord"></i> Unirse
+                </a>
+            </div>
+            
+            <!-- Twitch -->
+            <div class="social-card">
+                <div class="social-icon" style="color: #9146FF;">
+                    <i class="fab fa-twitch"></i>
+                </div>
+                <h2 class="social-name">Twitch</h2>
+                <p class="social-username">@tutodigital_</p>
+                <a href="https://www.twitch.tv/tutodigital_" target="_blank" class="social-btn">
+                    <i class="fab fa-twitch"></i> Ver Directos
+                </a>
+            </div>
+            
+            <!-- Kick -->
+            <div class="social-card">
+                <div class="social-icon">
+                    <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/kick-streaming-platform-logo-icon.png" alt="Kick" class="social-icon-img">
+                </div>
+                <h2 class="social-name">Kick</h2>
+                <p class="social-username">@tutodigital</p>
+                <a href="https://kick.com/tutodigital" target="_blank" class="social-btn">
+                    <i class="fas fa-video"></i> Ver Directos
+                </a>
+            </div>
+            
+            <!-- Portafolio -->
+            <div class="social-card">
+                <div class="social-icon" style="color: var(--accent-light);">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h2 class="social-name">Portafolio</h2>
+                <p class="social-username">Mis trabajos y proyectos</p>
+                <a href="https://digitalportafolio.carrd.co/" target="_blank" class="social-btn">
+                    <i class="fas fa-briefcase"></i> Ver Portafolio
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Digital. Todos los derechos reservados.</p>
+            <p>Contáctame: contactogamedroid@gmail.com</p>
+        </footer>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const size = Math.random() * 2 + 0.5;
+                const duration = (Math.random() * 3 + 1).toFixed(1);
+                const moveDuration = (Math.random() * 30 + 20).toFixed(1);
+                const moveX = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const moveY = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const brightness = 0.3 + Math.random() * 0.5;
+                
+                star.style.left = posX + 'vw';
+                star.style.top = posY + 'vh';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.opacity = brightness;
+                star.style.setProperty('--duration', duration);
+                star.style.setProperty('--move-duration', moveDuration);
+                star.style.setProperty('--move-x', moveX);
+                star.style.setProperty('--move-y', moveY);
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        window.addEventListener('load', createStars);
+    </script>
+</body>
+</html>
