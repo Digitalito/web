@@ -530,21 +530,6 @@
             </div>
         </div>
 
-    <!-- Último video de YouTube -->
-    <section style="margin:40px 0; text-align:center;">
-      <h2 style="margin-bottom:16px; font-weight:700; font-size:1.5rem;">📺 Último video en YouTube</h2>
-      <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:12px; max-width:800px; margin:auto;">
-        <iframe 
-          src="https://www.youtube.com/embed/VIDEO_ID_AQUI" 
-          title="Último video de Digital en YouTube" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen 
-          style="position:absolute; top:0; left:0; width:100%; height:100%;">
-        </iframe>
-      </div>
-    </section>
-
     <!-- Botón para compartir -->
     <div style="text-align:center; margin:30px 0;">
       <button id="share-btn" style="
@@ -616,5 +601,27 @@
         'floating-chat.donateButton.text-color': '#fff'
       });
     </script>
+
+    <!-- CÓDIGO SHARE BOTTOM -->
+  <script>
+    document.getElementById('share-btn').addEventListener('click', async () => {
+      const shareData = {
+        title: 'Digital | Redes Sociales',
+        text: 'Conecta conmigo en todas mis plataformas 🎮',
+        url: window.location.href
+      };
+      if (navigator.share) {
+        try { await navigator.share(shareData); }
+        catch(err) { console.warn('Compartir cancelado', err); }
+      } else {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          alert('Enlace copiado al portapapeles ✅');
+        } catch (err) {
+          alert('No se pudo copiar el enlace 😢');
+        }
+      }
+    });
+  </script>
 </body>
 </html>
