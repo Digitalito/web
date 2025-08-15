@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        <!-- Enlace al manifest.json (PWA) -->
+    <!-- Enlace al manifest.json (PWA) -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Meta tags adicionales para PWA -->
@@ -24,28 +24,16 @@
     <!-- Versión actualizada de Font Awesome 6.5.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Meta Tags Específicos para Twitter/X -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@tutodigital_">
-    <meta name="twitter:creator" content="@tutodigital_">
-    <meta name="twitter:title" content="Digital | Enlace a todas mis redes">
-    <meta name="twitter:description" content="YouTube, Twitch, TikTok, Instagram y más. ¡Contenido gaming diario y directos en vivo!">
-    <meta name="twitter:image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
-    <meta name="twitter:image:alt" content="Perfil completo de redes sociales de Digital">
+    <!-- Meta Tags Dinámicos -->
+    <meta property="og:url" id="og-url" content="https://tutodigital.vercel.app/">
+    <meta property="og:title" id="og-title" content="Digital | Redes Sociales">
+    <meta property="og:description" id="og-description" content="Conecta conmigo en todas mis plataformas de contenido gaming y streaming">
+    <meta property="og:image" id="og-image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
     
-    <!-- Open Graph (compatible con Discord, WhatsApp, etc.) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tutodigital.vercel.app/">
-    <meta property="og:title" content="Digital | Enlace a todas mis redes">
-    <meta property="og:description" content="Conecta conmigo en todas mis plataformas de contenido gaming y streaming">
-    <meta property="og:image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Digital">
-    
-    <!-- Configuración adicional importante -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="canonical" href="https://tutodigital.vercel.app/">
+    <!-- Twitter Cards Dinámicos -->
+    <meta name="twitter:title" id="twitter-title" content="Digital | Enlace a todas mis redes">
+    <meta name="twitter:description" id="twitter-description" content="YouTube, Twitch, TikTok, Instagram y más. ¡Contenido gaming diario y directos en vivo!">
+    <meta name="twitter:image" id="twitter-image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
 
     <style>
         * {
@@ -80,6 +68,7 @@
             overflow-x: hidden;
             position: relative;
             font-family: 'Montserrat', sans-serif;
+            transition: opacity 0.3s ease;
         }
 
         .stars {
@@ -365,6 +354,54 @@
             animation-delay: 0.5s;
         }
 
+        /* Pantalla de redirección */
+        .redirect-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--background);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .redirect-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .redirect-spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .redirect-message {
+            font-size: 1.5rem;
+            text-align: center;
+            max-width: 80%;
+            color: var(--text-secondary);
+        }
+        
+        .redirect-platform {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
         @media (max-width: 768px) {
             .profile-name {
                 font-size: 2.8rem;
@@ -386,6 +423,10 @@
             
             .social-card {
                 padding: 25px 20px;
+            }
+
+            .redirect-message {
+                font-size: 1.3rem;
             }
         }
 
@@ -413,10 +454,20 @@
             .social-icon .fa-x-twitter {
                 font-size: 2.5rem;
             }
+
+            .redirect-message {
+                font-size: 1.1rem;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Pantalla de redirección -->
+    <div class="redirect-overlay hidden" id="redirectOverlay">
+        <div class="redirect-spinner" id="redirectSpinner"></div>
+        <p class="redirect-message">Redirigiendo a <span class="redirect-platform" id="platformName">la plataforma</span>...</p>
+    </div>
+    
     <div class="stars" id="stars"></div>
     
     <div class="container">
@@ -530,20 +581,20 @@
             </div>
         </div>
 
-    <!-- Botón para compartir -->
-    <div style="text-align:center; margin:30px 0;">
-      <button id="share-btn" style="
-        background:linear-gradient(90deg,#4800ff,#b300ff);
-        border:none; color:white; padding:12px 20px; 
-        font-size:1rem; font-weight:600; border-radius:8px;
-        cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fas fa-share-alt"></i> Compartir esta página
-      </button>
-    </div>
+        <!-- Botón para compartir -->
+        <div style="text-align:center; margin:30px 0;">
+          <button id="share-btn" style="
+            background:linear-gradient(90deg,#4800ff,#b300ff);
+            border:none; color:white; padding:12px 20px; 
+            font-size:1rem; font-weight:600; border-radius:8px;
+            cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
+            <i class="fas fa-share-alt"></i> Compartir esta página
+          </button>
+        </div>
             
         <footer>
-               <p>© 2025 Digital. Todos los derechos reservados.</p>
-               <p>Contáctame: <a href="mailto:tutodigital@proton.me" style="color:inherit; text-decoration:underline">tutodigital@proton.me</a></p>
+            <p>© 2025 Digital. Todos los derechos reservados.</p>
+            <p>Contáctame: <a href="mailto:tutodigital@proton.me" style="color:inherit; text-decoration:underline">tutodigital@proton.me</a></p>
         </footer>
     </div>
 
@@ -603,108 +654,175 @@
     </script>
 
     <!-- CÓDIGO SHARE BOTTOM -->
-  <script>
-    document.getElementById('share-btn').addEventListener('click', async () => {
-      const shareData = {
-        title: 'Digital | Redes Sociales',
-        text: 'Conecta conmigo en todas mis plataformas 🎮',
-        url: window.location.href
-      };
-      if (navigator.share) {
-        try { await navigator.share(shareData); }
-        catch(err) { console.warn('Compartir cancelado', err); }
-      } else {
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          alert('Enlace copiado al portapapeles ✅');
-        } catch (err) {
-          alert('No se pudo copiar el enlace 😢');
+    <script>
+      document.getElementById('share-btn').addEventListener('click', async () => {
+        const shareData = {
+          title: 'Digital | Redes Sociales',
+          text: 'Conecta conmigo en todas mis plataformas 🎮',
+          url: window.location.href
+        };
+        if (navigator.share) {
+          try { await navigator.share(shareData); }
+          catch(err) { console.warn('Compartir cancelado', err); }
+        } else {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            alert('Enlace copiado al portapapeles ✅');
+          } catch (err) {
+            alert('No se pudo copiar el enlace 😢');
+          }
         }
-      }
-    });
-  </script>
+      });
+    </script>
 
-<script>
-    // Mapeo de rutas a URLs finales
-    const redirectMap = {
-        '/discord': 'https://dsc.gg/digitalgalaxy/',
-        '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
-        '/tiktok': 'https://www.tiktok.com/@tutodigital_',
-        '/instagram': 'https://www.instagram.com/TutoDigital_/',
-        '/twitter': 'https://twitter.com/tutodigital_',
-        '/twitch': 'https://www.twitch.tv/tutodigital_',
-        '/kick': 'https://kick.com/tutodigital',
-        '/portafolio': 'https://digitalportafolio.carrd.co/'
-    };
+    <script>
+        // Configuración de embeds con imágenes oficiales
+        const embedConfig = {
+            '/discord': {
+                title: 'Únete a mi servidor de Discord!',
+                description: 'Comunidad activa de gamers y creadores de contenido',
+                image: 'https://assets-global.website-files.com/6257adef93867e50d84d30e2/62594fddd654fc29fcc07359_cb48d2a8d4991281d7a6a95d2f58195e.svg',
+                platform: 'Discord',
+                color: '#5865F2'
+            },
+            '/youtube': {
+                title: 'Suscríbete a mi canal de YouTube',
+                description: 'Videos diarios de gaming, tutoriales y directos',
+                image: 'https://www.youtube.com/s/desktop/d743f786/img/favicon_144x144.png',
+                platform: 'YouTube',
+                color: '#FF0000'
+            },
+            '/tiktok': {
+                title: 'Sígueme en TikTok',
+                description: 'Contenido gaming en formato corto y divertido',
+                image: 'https://sf16-scmcdn-va.ibytedtos.com/goofy/tiktok/web/node/_next/static/images/logo_144x144-663b9c9c9c5d2dca5e1d5b0d0b4e4e5e.png',
+                platform: 'TikTok',
+                color: '#69C9D0'
+            },
+            '/instagram': {
+                title: 'Sígueme en Instagram',
+                description: 'Detrás de cámaras, stories y contenido exclusivo',
+                image: 'https://www.instagram.com/static/images/ico/favicon-200.png/ab6eff595bb1.png',
+                platform: 'Instagram',
+                color: '#E1306C'
+            },
+            '/twitter': {
+                title: 'Sígueme en Twitter/X',
+                description: 'Noticias, actualizaciones y memes en tiempo real',
+                image: 'https://abs.twimg.com/favicons/twitter.3.ico',
+                platform: 'Twitter/X',
+                color: '#1DA1F2'
+            },
+            '/twitch': {
+                title: 'Sígueme en Twitch',
+                description: '¡Transmisiones en vivo todos los días!',
+                image: 'https://static.twitchcdn.net/assets/favicon-32-e29e246c157142c94346.png',
+                platform: 'Twitch',
+                color: '#9146FF'
+            },
+            '/kick': {
+                title: 'Sígueme en Kick',
+                description: 'Streaming alternativo en la nueva plataforma',
+                image: 'https://dbrand.com/sites/default/files/2023-04/kick_logo.png',
+                platform: 'Kick',
+                color: '#53FC18'
+            },
+            '/portafolio': {
+                title: 'Visita mi Portafolio',
+                description: 'Trabajos destacados y proyectos personales',
+                image: 'https://carrd.co/favicon.ico',
+                platform: 'Portafolio',
+                color: '#CC33FF'
+            },
+            // Configuración por defecto (inicio)
+            '/': {
+                title: 'Digital | Redes Sociales',
+                description: 'Conecta conmigo en todas mis plataformas de contenido gaming y streaming',
+                image: 'https://tutodigital.vercel.app/screenshot1.png?v=3',
+                platform: 'Inicio',
+                color: '#4800FF'
+            }
+        };
 
-    // Función para manejar redirecciones
-    function handleRedirects() {
-        const currentPath = window.location.pathname;
-        
-        if (redirectMap[currentPath]) {
-            // Mostrar mensaje de redirección
-            document.body.innerHTML = `
-                <style>
-                    .redirect-message {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        background: var(--background);
-                        z-index: 1000;
-                        font-family: 'Montserrat', sans-serif;
-                    }
-                    .spinner {
-                        width: 50px;
-                        height: 50px;
-                        border: 5px solid rgba(255,255,255,0.3);
-                        border-radius: 50%;
-                        border-top-color: var(--primary);
-                        animation: spin 1s ease-in-out infinite;
-                        margin-bottom: 20px;
-                    }
-                    @keyframes spin {
-                        to { transform: rotate(360deg); }
-                    }
-                </style>
-                <div class="redirect-message">
-                    <div class="spinner"></div>
-                    <h2>Redirigiendo...</h2>
-                </div>
-            `;
+        // Mapeo de rutas a URLs finales
+        const redirectMap = {
+            '/discord': 'https://dsc.gg/digitalgalaxy/',
+            '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
+            '/tiktok': 'https://www.tiktok.com/@tutodigital_',
+            '/instagram': 'https://www.instagram.com/TutoDigital_/',
+            '/twitter': 'https://twitter.com/tutodigital_',
+            '/twitch': 'https://www.twitch.tv/tutodigital_',
+            '/kick': 'https://kick.com/tutodigital',
+            '/portafolio': 'https://digitalportafolio.carrd.co/'
+        };
+
+        // Actualizar meta tags para embeds
+        function updateMetaTags() {
+            const currentPath = window.location.pathname;
+            const config = embedConfig[currentPath] || embedConfig['/'];
             
-            // Redirigir después de 1.5 segundos
-            setTimeout(() => {
-                window.location.replace(redirectMap[currentPath]);
-            }, 1500);
-            return;
+            // Actualizar Open Graph
+            document.getElementById('og-title').content = config.title;
+            document.getElementById('og-description').content = config.description;
+            document.getElementById('og-image').content = config.image;
+            document.getElementById('og-url').content = window.location.href;
+            
+            // Actualizar Twitter Cards
+            document.getElementById('twitter-title').content = config.title;
+            document.getElementById('twitter-description').content = config.description;
+            document.getElementById('twitter-image').content = config.image;
         }
-        
-        // Agregar event listeners para los enlaces
-        document.querySelectorAll('.social-btn').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const path = this.getAttribute('href');
+
+        // Función para manejar redirecciones
+        function handleRedirects() {
+            const currentPath = window.location.pathname;
+            const config = embedConfig[currentPath] || null;
+            
+            if (config && config !== embedConfig['/']) {
+                // Mostrar mensaje de redirección personalizado
+                document.getElementById('platformName').textContent = config.platform;
+                document.getElementById('redirectOverlay').classList.remove('hidden');
+                document.getElementById('redirectSpinner').style.borderTopColor = config.color;
+                document.body.style.overflow = 'hidden';
                 
-                // Animación de carga
-                document.body.style.opacity = '0.7';
-                document.body.style.transition = 'opacity 0.3s ease';
-                
-                // Redirigir después de un breve retraso
+                // Redirigir después de 2 segundos
                 setTimeout(() => {
-                    window.location.href = redirectMap[path];
-                }, 300);
+                    window.location.replace(redirectMap[currentPath]);
+                }, 2000);
+                return;
+            }
+            
+            // Ocultar overlay si estamos en la página principal
+            document.getElementById('redirectOverlay').classList.add('hidden');
+            
+            // Agregar event listeners para los enlaces
+            document.querySelectorAll('.social-btn').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const path = this.getAttribute('href');
+                    
+                    // Mostrar overlay de redirección
+                    const config = embedConfig[path];
+                    if (config) {
+                        document.getElementById('platformName').textContent = config.platform;
+                        document.getElementById('redirectSpinner').style.borderTopColor = config.color;
+                        document.getElementById('redirectOverlay').classList.remove('hidden');
+                        document.body.style.overflow = 'hidden';
+                        
+                        // Redirigir después de 1 segundo
+                        setTimeout(() => {
+                            window.location.href = redirectMap[path];
+                        }, 1000);
+                    }
+                });
             });
+        }
+
+        // Llamar a las funciones cuando la página esté cargada
+        window.addEventListener('DOMContentLoaded', () => {
+            updateMetaTags();
+            handleRedirects();
         });
-    }
-    
-    // Llamar a la función cuando la página esté cargada
-    window.addEventListener('DOMContentLoaded', handleRedirects);
-</script>
+    </script>
 </body>
 </html>
