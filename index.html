@@ -440,7 +440,7 @@
                 </div>
                 <h2 class="social-name">YouTube</h2>
                 <p class="social-username">TutoDigital</p>
-                <a href="https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1" target="_blank" class="social-btn">
+                <a href="/youtube" class="social-btn">
                     <i class="fab fa-youtube"></i> Visitar Canal
                 </a>
             </div>
@@ -452,7 +452,7 @@
                 </div>
                 <h2 class="social-name">TikTok</h2>
                 <p class="social-username">@tutodigital_</p>
-                <a href="https://www.tiktok.com/@tutodigital_" target="_blank" class="social-btn">
+                <a href="/tiktok" class="social-btn">
                     <i class="fab fa-tiktok"></i> Seguir
                 </a>
             </div>
@@ -464,19 +464,19 @@
                 </div>
                 <h2 class="social-name">Instagram</h2>
                 <p class="social-username">@TutoDigital_</p>
-                <a href="https://www.instagram.com/TutoDigital_/" target="_blank" class="social-btn">
+                <a href="/instagram" class="social-btn">
                     <i class="fab fa-instagram"></i> Seguir
                 </a>
             </div>
             
-            <!-- Twitter/X - Solución definitiva -->
+            <!-- Twitter/X -->
             <div class="social-card">
                 <div class="social-icon">
                     <i class="fab fa-x-twitter"></i>
                 </div>
                 <h2 class="social-name">X (Twitter)</h2>
                 <p class="social-username">@tutodigital_</p>
-                <a href="https://twitter.com/tutodigital_" target="_blank" class="social-btn">
+                <a href="/twitter" class="social-btn">
                     <i class="fab fa-x-twitter"></i> Seguir
                 </a>
             </div>
@@ -488,7 +488,7 @@
                 </div>
                 <h2 class="social-name">Discord</h2>
                 <p class="social-username">Comunidad</p>
-                <a href="https://dsc.gg/digitalgalaxy/" target="_blank" class="social-btn">
+                <a href="/discord" class="social-btn">
                     <i class="fab fa-discord"></i> Unirse
                 </a>
             </div>
@@ -500,7 +500,7 @@
                 </div>
                 <h2 class="social-name">Twitch</h2>
                 <p class="social-username">@tutodigital_</p>
-                <a href="https://www.twitch.tv/tutodigital_" target="_blank" class="social-btn">
+                <a href="/twitch" class="social-btn">
                     <i class="fab fa-twitch"></i> Ver Directos
                 </a>
             </div>
@@ -512,7 +512,7 @@
                 </div>
                 <h2 class="social-name">Kick</h2>
                 <p class="social-username">@tutodigital</p>
-                <a href="https://kick.com/tutodigital" target="_blank" class="social-btn">
+                <a href="/kick" class="social-btn">
                     <i class="fas fa-video"></i> Ver Directos
                 </a>
             </div>
@@ -524,7 +524,7 @@
                 </div>
                 <h2 class="social-name">Portafolio</h2>
                 <p class="social-username">Mis trabajos y proyectos</p>
-                <a href="https://digitalportafolio.carrd.co/" target="_blank" class="social-btn">
+                <a href="/portafolio" class="social-btn">
                     <i class="fas fa-briefcase"></i> Ver Portafolio
                 </a>
             </div>
@@ -623,5 +623,52 @@
       }
     });
   </script>
+
+    <script>
+        // Mapeo de rutas a URLs finales
+        const redirectMap = {
+            '/discord': 'https://dsc.gg/digitalgalaxy/',
+            '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
+            '/tiktok': 'https://www.tiktok.com/@tutodigital_',
+            '/instagram': 'https://www.instagram.com/TutoDigital_/',
+            '/twitter': 'https://twitter.com/tutodigital_',
+            '/twitch': 'https://www.twitch.tv/tutodigital_',
+            '/kick': 'https://kick.com/tutodigital',
+            '/portafolio': 'https://digitalportafolio.carrd.co/'
+        };
+        
+        // Función para manejar redirecciones
+        function handleRedirects() {
+            const currentPath = window.location.pathname;
+            
+            if (redirectMap[currentPath]) {
+                // Redirigir inmediatamente
+                window.location.replace(redirectMap[currentPath]);
+                return;
+            }
+            
+            // Agregar event listeners para los enlaces
+            document.querySelectorAll('.social-btn').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const path = this.getAttribute('href');
+                    
+                    // Animación de carga
+                    document.body.style.opacity = '0.7';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    
+                    // Redirigir después de un breve retraso para la animación
+                    setTimeout(() => {
+                        window.location.href = redirectMap[path];
+                    }, 300);
+                });
+            });
+        }
+        
+        // Llamar a la función cuando la página esté cargada
+        window.addEventListener('DOMContentLoaded', handleRedirects);
+        
+        // ... (el resto del código JavaScript existente) ...
+    </script>
 </body>
 </html>
