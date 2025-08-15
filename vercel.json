@@ -1,0 +1,9 @@
+{
+  "routes": [
+    {
+      "src": "/(youtube|tiktok|instagram|twitter|discord|twitch|kick|portafolio)",
+      "dest": "/index.html",
+      "methods": ["GET"]
+    }
+  ]
+}
