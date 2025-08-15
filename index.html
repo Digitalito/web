@@ -624,51 +624,87 @@
     });
   </script>
 
-    <script>
-        // Mapeo de rutas a URLs finales
-        const redirectMap = {
-            '/discord': 'https://dsc.gg/digitalgalaxy/',
-            '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
-            '/tiktok': 'https://www.tiktok.com/@tutodigital_',
-            '/instagram': 'https://www.instagram.com/TutoDigital_/',
-            '/twitter': 'https://twitter.com/tutodigital_',
-            '/twitch': 'https://www.twitch.tv/tutodigital_',
-            '/kick': 'https://kick.com/tutodigital',
-            '/portafolio': 'https://digitalportafolio.carrd.co/'
-        };
+<script>
+    // Mapeo de rutas a URLs finales
+    const redirectMap = {
+        '/discord': 'https://dsc.gg/digitalgalaxy/',
+        '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
+        '/tiktok': 'https://www.tiktok.com/@tutodigital_',
+        '/instagram': 'https://www.instagram.com/TutoDigital_/',
+        '/twitter': 'https://twitter.com/tutodigital_',
+        '/twitch': 'https://www.twitch.tv/tutodigital_',
+        '/kick': 'https://kick.com/tutodigital',
+        '/portafolio': 'https://digitalportafolio.carrd.co/'
+    };
+
+    // Función para manejar redirecciones
+    function handleRedirects() {
+        const currentPath = window.location.pathname;
         
-        // Función para manejar redirecciones
-        function handleRedirects() {
-            const currentPath = window.location.pathname;
+        if (redirectMap[currentPath]) {
+            // Mostrar mensaje de redirección
+            document.body.innerHTML = `
+                <style>
+                    .redirect-message {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        background: var(--background);
+                        z-index: 1000;
+                        font-family: 'Montserrat', sans-serif;
+                    }
+                    .spinner {
+                        width: 50px;
+                        height: 50px;
+                        border: 5px solid rgba(255,255,255,0.3);
+                        border-radius: 50%;
+                        border-top-color: var(--primary);
+                        animation: spin 1s ease-in-out infinite;
+                        margin-bottom: 20px;
+                    }
+                    @keyframes spin {
+                        to { transform: rotate(360deg); }
+                    }
+                </style>
+                <div class="redirect-message">
+                    <div class="spinner"></div>
+                    <h2>Redirigiendo...</h2>
+                </div>
+            `;
             
-            if (redirectMap[currentPath]) {
-                // Redirigir inmediatamente
+            // Redirigir después de 1.5 segundos
+            setTimeout(() => {
                 window.location.replace(redirectMap[currentPath]);
-                return;
-            }
-            
-            // Agregar event listeners para los enlaces
-            document.querySelectorAll('.social-btn').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const path = this.getAttribute('href');
-                    
-                    // Animación de carga
-                    document.body.style.opacity = '0.7';
-                    document.body.style.transition = 'opacity 0.3s ease';
-                    
-                    // Redirigir después de un breve retraso para la animación
-                    setTimeout(() => {
-                        window.location.href = redirectMap[path];
-                    }, 300);
-                });
-            });
+            }, 1500);
+            return;
         }
         
-        // Llamar a la función cuando la página esté cargada
-        window.addEventListener('DOMContentLoaded', handleRedirects);
-        
-        // ... (el resto del código JavaScript existente) ...
-    </script>
+        // Agregar event listeners para los enlaces
+        document.querySelectorAll('.social-btn').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const path = this.getAttribute('href');
+                
+                // Animación de carga
+                document.body.style.opacity = '0.7';
+                document.body.style.transition = 'opacity 0.3s ease';
+                
+                // Redirigir después de un breve retraso
+                setTimeout(() => {
+                    window.location.href = redirectMap[path];
+                }, 300);
+            });
+        });
+    }
+    
+    // Llamar a la función cuando la página esté cargada
+    window.addEventListener('DOMContentLoaded', handleRedirects);
+</script>
 </body>
 </html>
