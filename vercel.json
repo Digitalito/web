@@ -1,7 +1,12 @@
 {
   "routes": [
     {
-      "src": "/(youtube|tiktok|instagram|twitter|discord|twitch|kick|portafolio)",
+      "src": "/portafolio",
+      "dest": "/portfolio.html",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/(youtube|tiktok|instagram|twitter|discord|twitch|kick)",
       "dest": "/index.html",
       "methods": ["GET"]
     }
