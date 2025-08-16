@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Términos de Servicio - Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4800ff;
+            --primary-light: #6a33ff;
+            --accent: #b300ff;
+            --text: #ffffff;
+            --text-secondary: #e0d6ff;
+            --background: #0c0e1d;
+            --card-bg: rgba(23, 17, 52, 0.7);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
+                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(72, 0, 255, 0.4);
+        }
+
+        .terms-content {
+            background: rgba(15, 10, 40, 0.5);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: var(--accent-light);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 10px;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.05rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .terms-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Términos de Servicio</h1>
+            <p>Última actualización: 16 de Agosto, 2025</p>
+        </header>
+        
+        <div class="terms-content">
+            <h2>1. Información General</h2>
+            <p>El artista se especializa en la creación de fotos de perfil, banners y miniaturas utilizando renders de Minecraft.</p>
+            <p>Todas las obras se realizan bajo pedido y personalización según las especificaciones del cliente.</p>
+            <p>El artista no realiza contenido NSFW (contenido explícito, sexual o inapropiado).</p>
+            
+            <h2>2. Proceso de Solicitud</h2>
+            <p>El cliente deberá proporcionar una descripción detallada de su pedido, incluyendo colores, temática, estilo, textos, y cualquier referencia visual que considere necesaria.</p>
+            <p>Cambios mayores en la idea inicial después de la aprobación podrán estar sujetos a cargos adicionales.</p>
+            
+            <h2>3. Tiempo de Entrega</h2>
+            <p>El tiempo estimado para completar una comisión dependerá de la complejidad de la obra y del volumen de pedidos en curso. Este será informado al cliente al momento de realizar el pedido.</p>
+            <p>Retrasos pueden ocurrir debido a imprevistos, pero el artista mantendrá comunicación constante con el cliente.</p>
+            
+            <h2>4. Pago</h2>
+            <p>Los pagos se aceptan a través de PayPal o Ko-Fi.</p>
+            <p>No se realizarán devoluciones después de que la obra esté completada y entregada.</p>
+            
+            <h2>5. Revisión y Modificaciones</h2>
+            <p>El cliente tendrá derecho a 2 revisiones gratuitas durante el proceso de creación.</p>
+            <p>Revisiones adicionales o cambios fuera del alcance del pedido inicial tendrán un costo extra.</p>
+            <p>Una vez entregada la obra final, no se realizarán cambios sin un cargo adicional.</p>
+            
+            <h2>6. Derechos de Autor y Uso de la Obra</h2>
+            <p>El artista conserva los derechos de autor de todas las obras creadas.</p>
+            <p>El cliente tiene permiso para usar la obra para fines personales o promocionales (en redes sociales, YouTube, Twitch, etc.), pero no para uso comercial (como revender o sublicenciar el arte) sin autorización escrita del artista.</p>
+            <p>El artista podrá publicar las obras en su portafolio o redes sociales, a menos que el cliente solicite explícitamente confidencialidad.</p>
+            
+            <h2>7. Prohibiciones</h2>
+            <p>Está prohibido reclamar la obra como propia o modificarla sin consentimiento del artista.</p>
+            <p>No se permite el uso del arte para fines ilegales, ofensivos, NSFW, o que infrinjan las reglas de las plataformas donde se publique.</p>
+            
+            <h2>8. Cancelaciones y Reembolsos</h2>
+            <p>Si el cliente decide cancelar la comisión antes de que el artista inicie el trabajo, se realizará un reembolso del 100%.</p>
+            <p>Si la cancelación ocurre después de iniciado el trabajo, no será reembolsado.</p>
+            <p>En caso de que el artista no pueda completar el pedido por razones personales, se realizará un reembolso completo.</p>
+            
+            <h2>9. Contacto y Comunicación</h2>
+            <p>Toda la comunicación deberá realizarse a través de los medios oficiales establecidos por el artista (correo electrónico, Discord, etc.).</p>
+            <p>Respuestas tardías por parte del cliente pueden afectar el tiempo de entrega.</p>
+            
+            <h2>10. Aceptación de los Términos</h2>
+            <p>Al solicitar una comisión, el cliente acepta automáticamente estos términos y condiciones.</p>
+        </div>
+        
+        <a href="/portafolio" class="back-btn">
+            <i class="fas fa-arrow-left"></i> Volver al Portafolio
+        </a>
+        
+        <footer>
+            <p>© 2025 Digital. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+</body>
+</html>
