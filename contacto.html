@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="menu.css">
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital | Contacto Formal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4800ff;
+            --primary-light: #6a33ff;
+            --primary-dark: #3300cc;
+            --accent: #b300ff;
+            --accent-light: #cc33ff;
+            --text: #ffffff;
+            --text-secondary: #e0d6ff;
+            --background: #0c0e1d;
+            --card-bg: rgba(23, 17, 52, 0.7);
+            --star-color: rgba(255, 255, 255, 0.8);
+            --formal-bg: rgba(18, 20, 44, 0.95);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
+                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--star-color);
+            border-radius: 50%;
+            animation: 
+                twinkle calc(var(--duration) * 1s) infinite ease-in-out,
+                move calc(var(--move-duration) * 1s) infinite linear;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(var(--move-x), var(--move-y)); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 25px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .profile-img-container {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 30px var(--primary);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0 auto;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .profile-name {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin: 20px 0 15px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            animation: shine 4s infinite ease-in-out;
+        }
+
+        @keyframes shine {
+            0%, 100% { 
+                background-position: 0% 50%;
+                text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            }
+            50% { 
+                background-position: 100% 50%;
+                text-shadow: 0 0 25px rgba(179, 0, 255, 0.6);
+            }
+        }
+
+        .profile-subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            color: var(--text-secondary);
+        }
+
+        .contact-container {
+            background: var(--formal-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-align: center;
+            color: var(--text);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .contact-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .contact-bar {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .contact-bar:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+            border-left: 4px solid var(--primary);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-info {
+            flex-grow: 1;
+        }
+
+        .contact-platform {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .contact-detail {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-button {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(72, 0, 255, 0.4);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2.2rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .contact-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .contact-icon {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            
+            .contact-info {
+                margin-bottom: 15px;
+                width: 100%;
+            }
+            
+            .contact-button {
+                align-self: flex-end;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 2rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1rem;
+            }
+            
+            .contact-container {
+                padding: 20px 15px;
+            }
+            
+            .contact-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-img-container">
+                    <img src="https://i.imgur.com/z6rPcHq.png" alt="Digital" class="profile-img">
+                </div>
+            </div>
+            <h1 class="profile-name">Contacto</h1>
+            <p class="profile-subtitle">
+                Para consultas profesionales, colaboraciones o cualquier asunto formal, no dude en ponerse en contacto conmigo a través de los siguientes canales.
+            </p>
+        </header>
+        
+        <div class="contact-container">
+            <h2 class="contact-title">Canales de Contacto</h2>
+            
+            <!-- Correo electrónico -->
+            <div class="contact-bar">
+                <div class="contact-icon" style="background: rgba(212, 70, 56, 0.15); color: #D44638;">
+                    <i class="fas fa-envelope fa-lg"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-platform">Correo Electrónico</div>
+                    <div class="contact-detail">tutodigital@proton.me</div>
+                </div>
+                <a href="mailto:tutodigital@proton.me" class="contact-button">Enviar Email</a>
+            </div>
+            
+            <!-- Discord -->
+            <div class="contact-bar">
+                <div class="contact-icon" style="background: rgba(88, 101, 242, 0.15); color: #5865F2;">
+                    <i class="fab fa-discord fa-lg"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-platform">Discord</div>
+                    <div class="contact-detail">@tutodigital</div>
+                </div>
+                <a href="/discord" class="contact-button">Unirse al Servidor</a>
+            </div>
+            
+            <!-- Twitter/X -->
+            <div class="contact-bar">
+                <div class="contact-icon" style="background: rgba(0, 0, 0, 0.15); color: #ffffff;">
+                    <i class="fab fa-x-twitter fa-lg"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-platform">X (Twitter)</div>
+                    <div class="contact-detail">@tutodigital_</div>
+                </div>
+                <a href="/twitter" class="contact-button">Enviar Mensaje</a>
+            </div>
+            
+            <!-- Instagram -->
+            <div class="contact-bar">
+                <div class="contact-icon" style="background: rgba(225, 48, 108, 0.15); color: #E1306C;">
+                    <i class="fab fa-instagram fa-lg"></i>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-platform">Instagram</div>
+                    <div class="contact-detail">@TutoDigital_</div>
+                </div>
+                <a href="/instagram" class="contact-button">Enviar DM</a>
+            </div>
+        </div>
+                
+        <footer>
+            <p>© 2025 Digital. Todos los derechos reservados.</p>
+            <p>Contáctame: <a href="mailto:tutodigital@proton.me">tutodigital@proton.me</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const size = Math.random() * 2 + 0.5;
+                const duration = (Math.random() * 3 + 1).toFixed(1);
+                const moveDuration = (Math.random() * 30 + 20).toFixed(1);
+                const moveX = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const moveY = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const brightness = 0.3 + Math.random() * 0.5;
+                
+                star.style.left = posX + 'vw';
+                star.style.top = posY + 'vh';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.opacity = brightness;
+                star.style.setProperty('--duration', duration);
+                star.style.setProperty('--move-duration', moveDuration);
+                star.style.setProperty('--move-x', moveX);
+                star.style.setProperty('--move-y', moveY);
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        window.addEventListener('load', createStars);
+    </script>
+
+    <script>
+        // Mapeo de rutas a URLs finales para la página de contacto
+        const redirectMap = {
+            '/discord': 'https://dsc.gg/digitalgalaxy/',
+            '/instagram': 'https://www.instagram.com/TutoDigital_/',
+            '/twitter': 'https://twitter.com/tutodigital_'
+        };
+
+        // Función para manejar redirecciones
+        function handleRedirects() {
+            // Agregar event listeners para los enlaces
+            document.querySelectorAll('.contact-button').forEach(link => {
+                if (link.getAttribute('href').startsWith('mailto:')) return; // No redirigir para mailto
+                
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const path = this.getAttribute('href');
+                    
+                    // Animación de carga
+                    document.body.style.opacity = '0.7';
+                    document.body.style.transition = 'opacity 0.3s ease';
+                    
+                    // Redirigir después de un breve retraso
+                    setTimeout(() => {
+                        if (redirectMap[path]) {
+                            window.location.href = redirectMap[path];
+                        }
+                    }, 300);
+                });
+            });
+        }
+        
+        // Llamar a la función cuando la página esté cargada
+        window.addEventListener('DOMContentLoaded', handleRedirects);
+    </script>
+
+    <!-- Script del menú hamburguesa -->
+    <script src="menu.js"></script>
+</body>
+</html>
