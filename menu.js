@@ -24,8 +24,8 @@ function loadMenu() {
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="https://tutodigital.vercel.app/eventos" class="menu-link">
-                            <i class="fas fa-calendar-alt"></i> Eventos
+                        <a href="https://tutodigital.vercel.app/eventos-y-colaboraciones" class="menu-link">
+                            <i class="fas fa-calendar-alt"></i> Eventos y Colaboraciones
                         </a>
                     </li>
                     <li class="menu-item">

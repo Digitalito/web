@@ -16,8 +16,8 @@
       "methods": ["GET"]
     },
     {
-      "src": "/eventos",
-      "dest": "/eventos.html",
+      "src": "/eventos-y-colaboraciones",
+      "dest": "/eventos-y-colaboraciones.html",
       "methods": ["GET"]
     },
     {

@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital | Eventos y Colaboraciones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="menu.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4800ff;
+            --primary-light: #6a33ff;
+            --primary-dark: #3300cc;
+            --accent: #b300ff;
+            --accent-light: #cc33ff;
+            --accent-blue: #00aaff;
+            --text: #ffffff;
+            --text-secondary: #e0d6ff;
+            --background: #0c0e1d;
+            --card-bg: rgba(23, 17, 52, 0.7);
+            --star-color: rgba(255, 255, 255, 0.8);
+            --section-bg: rgba(13, 9, 34, 0.85);
+            --collaboration-color: #00aaff;
+            --sponsor-color: #00cc99;
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
+                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--star-color);
+            border-radius: 50%;
+            animation: 
+                twinkle calc(var(--duration) * 1s) infinite ease-in-out,
+                move calc(var(--move-duration) * 1s) infinite linear;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.2; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(var(--move-x), var(--move-y)); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            margin-bottom: 20px;
+        }
+
+        .profile-container {
+            display: inline-block;
+            position: relative;
+            margin-bottom: 25px;
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px var(--primary);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .profile-img-container:hover {
+            box-shadow: 0 0 60px var(--primary-light);
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .profile-name {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0 15px;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            letter-spacing: -0.5px;
+            animation: fadeIn 0.8s ease-out forwards, shine 4s infinite ease-in-out;
+            opacity: 0;
+            animation-delay: 0.1s;
+        }
+
+        @keyframes shine {
+            0%, 100% { 
+                background-position: 0% 50%;
+                text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
+            }
+            50% { 
+                background-position: 100% 50%;
+                text-shadow: 0 0 25px rgba(179, 0, 255, 0.6);
+            }
+        }
+
+        .profile-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+
+        /* Secciones de eventos */
+        .events-section {
+            background: var(--section-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 1200px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.3s;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            text-align: center;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+
+        /* Grid de eventos */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .event-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .event-img-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .square-img-container {
+            height: auto;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .square-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-img,
+        .event-card:hover .square-img {
+            transform: scale(1.05);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .collaboration-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, var(--collaboration-color), var(--accent-blue));
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sponsor-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(90deg, var(--sponsor-color), #00ffcc);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .event-content {
+            padding: 25px;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .event-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .event-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .event-tag {
+            background: rgba(72, 0, 255, 0.2);
+            color: var(--accent-light);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .collaboration-tag {
+            background: rgba(0, 170, 255, 0.2);
+            color: var(--accent-blue);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .sponsor-tag {
+            background: rgba(0, 204, 153, 0.2);
+            color: #00ffcc;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .event-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .collaboration-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--collaboration-color), var(--accent-blue));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .sponsor-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--sponsor-color), #00ffcc);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .event-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(72, 0, 255, 0.4);
+        }
+
+        .collaboration-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+        }
+
+        .sponsor-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 204, 153, 0.4);
+        }
+
+        /* Botón de compartir */
+        .share-btn-container {
+            text-align: center;
+            margin: 40px 0 30px;
+        }
+
+        .share-btn {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border: none;
+            color: white;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(72, 0, 255, 0.4);
+        }
+
+        .share-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(72, 0, 255, 0.6);
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            font-size: 1.05rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.5s;
+        }
+
+        @media (max-width: 768px) {
+            .profile-name {
+                font-size: 2.5rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .events-section {
+                padding: 30px 20px;
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .profile-name {
+                font-size: 2.2rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .event-content {
+                padding: 20px;
+            }
+        }
+/* Colaboraciones y Patrocinadores - Cuadrículas más pequeñas */
+.collaborations-section .events-grid,
+.sponsors-section .events-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.collaborations-section .event-card,
+.sponsors-section .event-card {
+    transform: scale(0.95);
+    transform-origin: center top;
+}
+
+.collaborations-section .square-img-container,
+.sponsors-section .square-img-container {
+    height: auto; /* Mantiene la relación 1:1 */
+}
+
+.collaborations-section .event-content,
+.sponsors-section .event-content {
+    padding: 15px;
+}
+
+.collaborations-section .event-title,
+.sponsors-section .event-title {
+    font-size: 1.2rem;
+}
+
+.collaborations-section .event-description,
+.sponsors-section .event-description {
+    font-size: 0.9rem;
+}
+
+/* Ajustes para móviles */
+@media (max-width: 768px) {
+    .collaborations-section .events-grid,
+    .sponsors-section .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .collaborations-section .events-grid,
+    .sponsors-section .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .collaborations-section .event-card,
+    .sponsors-section .event-card {
+        transform: scale(1);
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <div class="profile-container">
+                <div class="profile-img-container">
+                    <img src="https://i.imgur.com/z6rPcHq.png" alt="Digital" class="profile-img">
+                </div>
+            </div>
+            <h1 class="profile-name">Digital | Eventos y Colaboraciones</h1>
+            <p class="profile-subtitle">
+                Revive los eventos más destacados en los que he participado y las colaboraciones con otros creadores y marcas. Desde eventos de Minecraft hasta colaboraciones especiales y streams..
+            </p>
+        </header>
+        
+        <!-- Eventos -->
+        <div class="events-section">
+            <h2 class="section-title">Eventos Destacados</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-img-container">
+                        <img src="https://i.imgur.com/nYmXI2t.jpeg" alt="Escondite" class="event-img">
+                        <div class="event-date">6 Jun 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Escondite Punto y Coma 2</h3>
+                        <p class="event-description">Evento donde los participantes demostraron sus habilidades escondiendose en Minecraft en una Ciudad - Hecho por: @SoyViceversa.</p>
+                        <div class="event-tags">
+                            <span class="event-tag">Escondite</span>
+                            <span class="event-tag">Cazadores</span>
+                        </div>
+                        <a href="https://youtu.be/30iXl5ekiIg?si=9ZjQHY3NDjvJYDwC" class="event-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Ver video
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-img-container">
+                        <img src="https://i.imgur.com/UIUwfr2.jpeg" alt="TriArena" class="event-img">
+                        <div class="event-date">26 Ene 2025</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">TriArena Challenge</h3>
+                        <p class="event-description">Un maratón de desafios donde participaron 100 jugadores. Uno de los eventos más grandes organizados por mi hasta la fecha.</p>
+                        <div class="event-tags">
+                            <span class="event-tag">Maratón</span>
+                            <span class="event-tag">Comunidad</span>
+                        </div>
+                        <a href="https://youtu.be/yn_gfhtIFjs?si=JIaYIzd8PuZ5gCgR" class="event-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Ver video
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-img-container">
+                        <img src="https://i.imgur.com/3p3jjHh.jpeg" alt="ONEBLOCK con mis SEGUIDORES" class="event-img">
+                        <div class="event-date">15 Sep 2023</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">ONEBLOCK con mis SEGUIDORES</h3>
+                        <p class="event-description">Evento especial donde intentamos pasarnos Minecraft ONEBLOCK con la participación de la comunidad.</p>
+                        <div class="event-tags">
+                            <span class="event-tag">Comunidad</span>
+                            <span class="event-tag">Serie</span>
+                        </div>
+                        <a href="https://www.youtube.com/@TutoDigitall" class="event-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Video no disponible
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colaboraciones con Personas -->
+        <div class="events-section collaborations-section">
+            <h2 class="section-title">Colaboraciones</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="square-img-container">
+                        <img src="https://yt3.googleusercontent.com/6_gD-5ewNFbahcQ1BUNzRwzyPrB_YMDvb4NoZt_x5QOxudu8zPNwpZryJTwjQ9qh6mzS4le-Jg=s160-c-k-c0x00ffffff-no-rj" alt="Colaborador 1" class="square-img">
+                        <div class="collaboration-badge">Colaboración</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">SoyViceversa</h3>
+                        <p class="event-description">Creador de contenido especializado en videos de Minecraft. Colaboramos en varios eventos y retos.</p>
+                        <div class="event-tags">
+                            <span class="collaboration-tag">Retos</span>
+                            <span class="collaboration-tag">Eventos</span>
+                        </div>
+                        <a href="https://www.youtube.com/@SoyViceversa" class="collaboration-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Ver canal
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="square-img-container">
+                        <img src="https://yt3.googleusercontent.com/0lcHS37JbL9j8JkLAzqG6rJtFRiETSZqjatq2PdPe7BNnCQYvAb6cXIOBT_GenCqLFC5fsttR08=s160-c-k-c0x00ffffff-no-rj" alt="Colaborador 2" class="square-img">
+                        <div class="collaboration-badge">Colaboración</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">AlexisFrontorio</h3>
+                        <p class="event-description">Creador que sube contenido variado de Minecraft. incluyendo memes, retos y eventos.</p>
+                        <div class="event-tags">
+                            <span class="collaboration-tag">Retos</span>
+                            <span class="collaboration-tag">Eventos</span>
+                        </div>
+                        <a href="https://www.youtube.com/@alexisfrontorio" class="collaboration-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Ver canal
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="square-img-container">
+                        <img src="https://yt3.googleusercontent.com/uLLjgIjYvSWIvAREl_fK8e7ALgIy7NPmqQTcPerAfqE5_phkaSGP04je2OmXusG84FHGw1-d-54=s160-c-k-c0x00ffffff-no-rj" alt="Colaborador 3" class="square-img">
+                        <div class="collaboration-badge">Colaboración</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Pixelo64</h3>
+                        <p class="event-description">Experto en pvp en Minecraft. sube gameplays, retos y contenido variado.</p>
+                        <div class="event-tags">
+                            <span class="collaboration-tag">Retos</span>
+                        </div>
+                        <a href="https://www.youtube.com/@Pixelo64" class="collaboration-link" target="_blank">
+                            <i class="fab fa-youtube"></i> Ver canal
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Colaboraciones con Patrocinadores -->
+        <div class="events-section sponsors-section">
+            <h2 class="section-title">Patrocinadores</h2>
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="square-img-container">
+                        <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/60062aef-755e-4997-899a-196f8afcf627/djckm85-873829f5-0ece-4385-98bf-5ed76b023a48.png/v1/fill/w_884,h_904,q_70,strp/absolute_cinema__hollow_knight_ver__by_ukrpower_djckm85-pre.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTEzNyIsInBhdGgiOiJcL2ZcLzYwMDYyYWVmLTc1NWUtNDk5Ny04OTlhLTE5NmY4YWZjZjYyN1wvZGpja204NS04NzM4MjlmNS0wZWNlLTQzODUtOThiZi01ZWQ3NmIwMjNhNDgucG5nIiwid2lkdGgiOiI8PTExMTEifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.s52WBEu_S5sN6uUD2d5vS6tzGK_kGK1g2FBZGj9PaSE" alt="Patrocinador 1" class="square-img">
+                        <div class="sponsor-badge">Patrocinio</div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">Próximamente</h3>
+                        <p class="event-description">...</p>
+                        <!-- <div class="event-tags">
+                            <span class="sponsor-tag">Periféricos</span>
+                            <span class="sponsor-tag">Premios</span> -->
+                        </div>
+                        <a href="https://tutodigital.vercel.app/contacto" class="sponsor-link" target="_blank">
+                            <i class="fas fa-external-link-alt"></i> Visitar web
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="share-btn-container">
+            <button id="share-btn" class="share-btn">
+                <i class="fas fa-share-alt"></i> Compartir esta página
+            </button>
+        </div>
+            
+        <footer>
+            <p>© 2025 Digital. Todos los derechos reservados.</p>
+            <p>Contáctame: <a href="mailto:tutodigital@proton.me" style="color:inherit; text-decoration:underline">tutodigital@proton.me</a></p>
+        </footer>
+    </div>
+
+    <script>
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const size = Math.random() * 2 + 0.5;
+                const duration = (Math.random() * 3 + 1).toFixed(1);
+                const moveDuration = (Math.random() * 30 + 20).toFixed(1);
+                const moveX = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const moveY = (Math.random() * 100 - 50).toFixed(0) + 'px';
+                const brightness = 0.3 + Math.random() * 0.5;
+                
+                star.style.left = posX + 'vw';
+                star.style.top = posY + 'vh';
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.opacity = brightness;
+                star.style.setProperty('--duration', duration);
+                star.style.setProperty('--move-duration', moveDuration);
+                star.style.setProperty('--move-x', moveX);
+                star.style.setProperty('--move-y', moveY);
+                
+                starsContainer.appendChild(star);
+            }
+        }
+        
+        window.addEventListener('load', createStars);
+        
+        // Botón de compartir
+        document.getElementById('share-btn').addEventListener('click', async () => {
+            const shareData = {
+                title: 'Eventos Digital',
+                text: 'Revive los eventos más destacados en los que he participado',
+                url: window.location.href
+            };
+            if (navigator.share) {
+                try { 
+                    await navigator.share(shareData); 
+                }
+                catch(err) { 
+                    console.warn('Compartir cancelado', err); 
+                }
+            } else {
+                try {
+                    await navigator.clipboard.writeText(window.location.href);
+                    alert('Enlace copiado al portapapeles ✅');
+                } catch (err) {
+                    alert('No se pudo copiar el enlace 😢');
+                }
+            }
+        });
+    </script>
+
+    <!-- Script del menú hamburguesa -->
+    <script src="menu.js"></script>
+
+</body>
+</html>
