@@ -349,6 +349,109 @@
             line-height: 1.6;
         }
 
+        /* Personas que confían en mí - Carrusel */
+        .trust-section {
+            background: var(--section-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.4s;
+            overflow: hidden;
+        }
+
+        .trust-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
+
+        .trust-carousel-track {
+            display: flex;
+            gap: 30px;
+            animation: scrollCarousel 40s linear infinite;
+            width: max-content;
+        }
+
+        .trust-card {
+            flex: 0 0 auto;
+            width: 180px;
+            background: rgba(72, 0, 255, 0.15);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .trust-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(72, 0, 255, 0.3);
+            background: rgba(179, 0, 255, 0.15);
+        }
+
+        .trust-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(72, 0, 255, 0.4);
+        }
+
+        .trust-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .trust-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .trust-role {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .trust-quote {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
+
+        .trust-quote i {
+            color: var(--accent-light);
+            margin: 0 5px;
+        }
+
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .trust-carousel:hover .trust-carousel-track {
+            animation-play-state: paused;
+        }
+
         /* Botones de acción */
         .action-buttons {
             display: flex;
@@ -570,8 +673,26 @@
                 font-size: 1.1rem;
             }
             
-            .gallery-section, .services-section {
+            .gallery-section, .services-section, .trust-section {
                 padding: 30px 20px;
+            }
+            
+            .trust-card {
+                width: 160px;
+                padding: 20px 15px;
+            }
+            
+            .trust-avatar {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .trust-name {
+                font-size: 1rem;
+            }
+            
+            .trust-quote {
+                font-size: 0.8rem;
             }
             
             .action-buttons {
@@ -603,6 +724,28 @@
             
             .section-title {
                 font-size: 1.8rem;
+            }
+            
+            .trust-card {
+                width: 140px;
+                padding: 15px 12px;
+            }
+            
+            .trust-avatar {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .trust-name {
+                font-size: 0.9rem;
+            }
+            
+            .trust-role {
+                font-size: 0.8rem;
+            }
+            
+            .trust-quote {
+                font-size: 0.75rem;
             }
             
             .action-btn {
@@ -700,6 +843,16 @@
             </div>
         </div>
         
+        <!-- NUEVA SECCIÓN: PERSONAS QUE CONFIÁN EN MÍ -->
+        <div class="trust-section">
+            <h2 class="section-title">Personas que confían en mí</h2>
+            <div class="trust-carousel">
+                <div class="trust-carousel-track" id="trust-carousel-track">
+                    <!-- Las tarjetas se generan dinámicamente con JavaScript -->
+                </div>
+            </div>
+        </div>
+        
         <div class="terms-section">
             <h3 class="terms-title">Términos y Condiciones</h3>
             <div class="terms-content">
@@ -713,7 +866,7 @@
                 <p>Cambios mayores en la idea inicial después de la aprobación podrán estar sujetos a cargos adicionales.</p>
                 
                 <h3>3. Tiempo de Entrega</h3>
-                <p>El tiempo estimado para completar una comisión dependerá de la complejidad de la obra y del volumen de pedidos en curso. Este será informado al cliente al momento de realizar el pedido.</p>
+                <p>El tiempo estimado para completar una comisión dependerá de la complejidad de la obra y del volumen de pedidos en curso. Este será informado al momento de realizar el pedido.</p>
                 <p>Retrasos pueden ocurrir debido a imprevistos, pero el artista mantendrá comunicación constante con el cliente.</p>
                 
                 <h3>4. Pago</h3>
@@ -821,6 +974,80 @@
                 }
             }
         });
+
+        // DATOS DE LAS PERSONAS QUE CONFIÁN - FÁCIL DE MODIFICAR
+        const trustPeople = [
+            {
+                name: "AlexMC",
+                role: "Youtuber",
+                avatar: "https://i.imgur.com/z6rPcHq.png", // Imagen de ejemplo
+                quote: "Excelente trabajo, mis vistas aumentaron un 40%"
+            },
+            {
+                name: "MinePro",
+                role: "Streamer",
+                avatar: "https://i.imgur.com/aX3w7He.png", // Imagen de ejemplo
+                quote: "Las miniaturas son increíbles, muy profesionales"
+            },
+            {
+                name: "CraftKing",
+                role: "Content Creator",
+                avatar: "https://i.imgur.com/z3R5KXw.png", // Imagen de ejemplo
+                quote: "Rápido, creativo y de gran calidad"
+            },
+            {
+                name: "PixelArt",
+                role: "Gamer",
+                avatar: "https://i.imgur.com/6Q9erEZ.png", // Imagen de ejemplo
+                quote: "Transformó completamente mi canal"
+            },
+            {
+                name: "SteveCraft",
+                role: "Youtuber",
+                avatar: "https://i.imgur.com/vepPr3V.png", // Imagen de ejemplo
+                quote: "Superó todas mis expectativas"
+            }
+            // PARA AÑADIR MÁS PERSONAS, SIMPLEMENTE AÑADE UN NUEVO OBJETO AQUÍ:
+            // {
+            //     name: "Nuevo Cliente",
+            //     role: "Su rol",
+            //     avatar: "URL_de_la_imagen",
+            //     quote: "Su testimonio"
+            // },
+        ];
+
+        // Función para crear el carrusel
+        function createTrustCarousel() {
+            const carouselTrack = document.getElementById('trust-carousel-track');
+            
+            // Duplicamos el array para crear un efecto infinito sin espacios
+            // Si hay pocos elementos, se repetirán automáticamente
+            const duplicatedPeople = [...trustPeople, ...trustPeople, ...trustPeople];
+            
+            // Creamos las tarjetas
+            duplicatedPeople.forEach(person => {
+                const card = document.createElement('div');
+                card.className = 'trust-card';
+                card.innerHTML = `
+                    <div class="trust-avatar">
+                        <img src="${person.avatar}" alt="${person.name}">
+                    </div>
+                    <h4 class="trust-name">${person.name}</h4>
+                    <p class="trust-role">${person.role}</p>
+                    <p class="trust-quote"><i class="fas fa-quote-left"></i>${person.quote}<i class="fas fa-quote-right"></i></p>
+                `;
+                carouselTrack.appendChild(card);
+            });
+            
+            // Ajustamos el ancho del track para que coincida con el contenido
+            const cardWidth = 180; // Ancho de cada tarjeta
+            const gap = 30; // Espacio entre tarjetas
+            const totalWidth = (cardWidth + gap) * duplicatedPeople.length;
+            carouselTrack.style.width = `${totalWidth}px`;
+        }
+
+        // Inicializamos el carrusel cuando la página cargue
+        window.addEventListener('load', createTrustCarousel);
     </script>
 
 <!-- Script del menú hamburguesa -->
