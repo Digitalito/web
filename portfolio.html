@@ -348,126 +348,110 @@
             color: var(--text-secondary);
             line-height: 1.6;
         }
-        
-/* Personas que confían en mí - Carrusel CORREGIDO */
-.trust-section {
-    background: var(--section-bg);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 40px 30px;
-    margin: 30px auto;
-    max-width: 1200px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-    animation: fadeIn 0.8s ease-out forwards;
-    opacity: 0;
-    animation-delay: 0.4s;
-    overflow: hidden;
-}
 
-.trust-carousel {
-    position: relative;
-    overflow: hidden;
-    padding: 20px 0;
-    mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-    );
-    -webkit-mask-image: linear-gradient(
-        to right,
-        transparent,
-        black 10%,
-        black 90%,
-        transparent
-    );
-}
+        /* Personas que confían en mí - Carrusel */
+        .trust-section {
+            background: var(--section-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px 30px;
+            margin: 30px auto;
+            max-width: 1200px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.4s;
+            overflow: hidden;
+        }
 
-.trust-carousel-track {
-    display: flex;
-    gap: 30px;
-    animation: scrollCarousel 60s linear infinite;
-    width: max-content;
-    padding: 0 20px;
-}
+        .trust-carousel {
+            position: relative;
+            overflow: hidden;
+            padding: 20px 0;
+        }
 
-.trust-card {
-    flex: 0 0 auto;
-    width: 180px;
-    background: rgba(72, 0, 255, 0.15);
-    border-radius: 16px;
-    padding: 25px 20px;
-    text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    backdrop-filter: blur(5px);
-}
+        .trust-carousel-track {
+            display: flex;
+            gap: 30px;
+            animation: scrollCarousel 40s linear infinite;
+            width: max-content;
+        }
 
-.trust-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(72, 0, 255, 0.3);
-    background: rgba(179, 0, 255, 0.15);
-}
+        .trust-card {
+            flex: 0 0 auto;
+            width: 180px;
+            background: rgba(72, 0, 255, 0.15);
+            border-radius: 16px;
+            padding: 25px 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
 
-.trust-avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    overflow: hidden;
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 0 20px rgba(72, 0, 255, 0.4);
-}
+        .trust-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(72, 0, 255, 0.3);
+            background: rgba(179, 0, 255, 0.15);
+        }
 
-.trust-avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+        .trust-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(72, 0, 255, 0.4);
+        }
 
-.trust-name {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: var(--text);
-}
+        .trust-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-.trust-role {
-    font-size: 0.9rem;
-    color: var(--accent-light);
-    font-weight: 500;
-    margin-bottom: 10px;
-}
+        .trust-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
 
-.trust-quote {
-    font-size: 0.85rem;
-    color: var(--text-secondary);
-    font-style: italic;
-    line-height: 1.4;
-    margin-top: 10px;
-}
+        .trust-role {
+            font-size: 0.9rem;
+            color: var(--accent-light);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
 
-.trust-quote i {
-    color: var(--accent-light);
-    margin: 0 5px;
-}
+        .trust-quote {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            line-height: 1.4;
+            margin-top: 10px;
+        }
 
-/* ANIMACIÓN MEJORADA - Sin cortes */
-@keyframes scrollCarousel {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        /* Mueve exactamente el ancho de la mitad de las tarjetas duplicadas */
-        transform: translateX(calc(-180px * var(--card-count) - 30px * var(--card-count) / 2));
-    }
-}
+        .trust-quote i {
+            color: var(--accent-light);
+            margin: 0 5px;
+        }
 
-.trust-carousel:hover .trust-carousel-track {
-    animation-play-state: paused;
-}
+        @keyframes scrollCarousel {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .trust-carousel:hover .trust-carousel-track {
+            animation-play-state: paused;
+        }
+
         /* Botones de acción */
         .action-buttons {
             display: flex;
@@ -1031,88 +1015,42 @@
             //     quote: "Su testimonio"
             // },
         ];
-        
-// Función para crear el carrusel MEJORADA
-function createTrustCarousel() {
-    const carouselTrack = document.getElementById('trust-carousel-track');
-    
-    // Si hay pocas tarjetas, las duplicamos más veces para evitar cortes
-    let duplicationFactor = 3;
-    if (trustPeople.length <= 3) {
-        duplicationFactor = 5; // Más duplicaciones si hay pocos elementos
-    } else if (trustPeople.length <= 5) {
-        duplicationFactor = 4;
-    }
-    
-    // Creamos un array duplicado
-    let duplicatedPeople = [];
-    for (let i = 0; i < duplicationFactor; i++) {
-        duplicatedPeople = duplicatedPeople.concat(trustPeople);
-    }
-    
-    // Creamos las tarjetas
-    duplicatedPeople.forEach(person => {
-        const card = document.createElement('div');
-        card.className = 'trust-card';
-        card.innerHTML = `
-            <div class="trust-avatar">
-                <img src="${person.avatar}" alt="${person.name}" loading="lazy">
-            </div>
-            <h4 class="trust-name">${person.name}</h4>
-            <p class="trust-role">${person.role}</p>
-            <p class="trust-quote"><i class="fas fa-quote-left"></i>${person.quote}<i class="fas fa-quote-right"></i></p>
-        `;
-        carouselTrack.appendChild(card);
-    });
-    
-    // Calculamos el ancho exacto para una transición suave
-    const cardWidth = 180; // Ancho de cada tarjeta
-    const gap = 30; // Espacio entre tarjetas
-    const cardCount = trustPeople.length; // Cantidad original de tarjetas
-    
-    // Guardamos el número de tarjetas originales como variable CSS
-    document.documentElement.style.setProperty('--card-count', cardCount);
-    
-    // Ajustamos el ancho del track
-    const totalWidth = (cardWidth + gap) * duplicatedPeople.length;
-    carouselTrack.style.width = `${totalWidth}px`;
-    
-    // Ajustamos la duración de la animación basada en la cantidad de tarjetas
-    const animationDuration = 20 + (cardCount * 8); // Más lento si hay más tarjetas
-    carouselTrack.style.animationDuration = `${animationDuration}s`;
-    
-    // Forzamos un reflow para reiniciar la animación sin cortes
-    void carouselTrack.offsetWidth;
-    
-    console.log(`Carrusel creado con ${duplicatedPeople.length} tarjetas, animación: ${animationDuration}s`);
-}
 
-// Inicializamos el carrusel cuando la página cargue
-window.addEventListener('load', createTrustCarousel);
-
-// Opcional: Reiniciar la animación periódicamente para evitar problemas de rendimiento
-let resetInterval;
-function setupCarouselReset() {
-    // Limpiamos cualquier intervalo previo
-    if (resetInterval) clearInterval(resetInterval);
-    
-    // Reiniciamos la animación cada 5 minutos para evitar problemas
-    resetInterval = setInterval(() => {
-        const carouselTrack = document.getElementById('trust-carousel-track');
-        if (carouselTrack) {
-            carouselTrack.style.animation = 'none';
-            void carouselTrack.offsetWidth; // Trigger reflow
-            carouselTrack.style.animation = `scrollCarousel 60s linear infinite`;
+        // Función para crear el carrusel
+        function createTrustCarousel() {
+            const carouselTrack = document.getElementById('trust-carousel-track');
+            
+            // Duplicamos el array para crear un efecto infinito sin espacios
+            // Si hay pocos elementos, se repetirán automáticamente
+            const duplicatedPeople = [...trustPeople, ...trustPeople, ...trustPeople];
+            
+            // Creamos las tarjetas
+            duplicatedPeople.forEach(person => {
+                const card = document.createElement('div');
+                card.className = 'trust-card';
+                card.innerHTML = `
+                    <div class="trust-avatar">
+                        <img src="${person.avatar}" alt="${person.name}">
+                    </div>
+                    <h4 class="trust-name">${person.name}</h4>
+                    <p class="trust-role">${person.role}</p>
+                    <p class="trust-quote"><i class="fas fa-quote-left"></i>${person.quote}<i class="fas fa-quote-right"></i></p>
+                `;
+                carouselTrack.appendChild(card);
+            });
+            
+            // Ajustamos el ancho del track para que coincida con el contenido
+            const cardWidth = 180; // Ancho de cada tarjeta
+            const gap = 30; // Espacio entre tarjetas
+            const totalWidth = (cardWidth + gap) * duplicatedPeople.length;
+            carouselTrack.style.width = `${totalWidth}px`;
         }
-    }, 300000); // 5 minutos
-}
 
-window.addEventListener('load', () => {
-    createTrustCarousel();
-    setupCarouselReset();
-});
+        // Inicializamos el carrusel cuando la página cargue
+        window.addEventListener('load', createTrustCarousel);
+    </script>
 
-    //<!-- Script del menú hamburguesa -->
+<!-- Script del menú hamburguesa -->
 <script src="menu.js"></script>
 
 </body>
