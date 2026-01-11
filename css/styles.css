@@ -1031,17 +1031,76 @@ footer {
         padding: 20px;
     }
 
-    .action-btn {
-        padding: 18px 15px;
-        font-size: 1rem;
+    .action-btn,
+    .social-btn,
+    .contact-button,
+    .event-link,
+    .collaboration-link,
+    .sponsor-link,
+    .share-btn,
+    .back-btn,
+    .terms-link {
+        padding: 12px 15px; /* Reduced from 18px/14px */
+        font-size: 0.95rem; /* Reduced from 1rem/1.1rem */
+        min-height: 50px; /* Ensure touch target */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%; /* Full width on mobile for consistency */
+        box-sizing: border-box;
     }
     
-    .action-btn i {
-        font-size: 2rem;
+    .action-btn i,
+    .social-btn i,
+    .contact-button i,
+    .event-link i,
+    .collaboration-link i,
+    .sponsor-link i,
+    .share-btn i,
+    .back-btn i {
+        font-size: 1.5rem; /* Standardized icon size */
+        margin-right: 10px;
+        margin-bottom: 0px; /* Reset margin bottom if it was set elsewhere */
     }
+    
+    .action-btn {
+         /* Specific override if needed, but the group selector handles most */
+         display: flex; /* Ensure it stays flex */
+    }
+
+    /* Fix stack direction for action-btn if it specifically needs column layout or kept row? 
+       Actually previous code had action-btn as flex-direction column in some contexts or row. 
+       Let's keep them all row with icon left for consistency on mobile, 
+       except maybe the big action buttons in Services which were nice.
+       Wait, the previous step set action-btn to display flex, center, center. 
+       Let's stick to that.
+    */
     
     .terms-content {
         padding: 20px 15px;
+    }
+
+    /* Portfolio Optimizations */
+    .gallery-item {
+        height: 160px; /* Reduced height */
+    }
+
+    .trust-section {
+        padding: 25px 15px;
+    }
+
+    .service-card {
+        padding: 20px 15px;
+    }
+
+    .services-section {
+        border: 2px solid var(--primary); /* Highlight border */
+        box-shadow: 0 0 20px rgba(72, 0, 255, 0.2); /* Soft glow */
+        padding: 30px 15px;
+    }
+
+    .service-title {
+        color: var(--accent-light); /* Make title pop more */
     }
 }
 /* ================== COLLABORATIONS & SPONSORS ================== */
@@ -1338,5 +1397,131 @@ footer {
     
     .trust-quote {
         font-size: 0.75rem;
+    }
+}
+/* ================== RESPONSIVENESS ================== */
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .profile-name {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 2.5rem;
+    }
+    
+    .profile-subtitle {
+        font-size: 1.2rem;
+        padding: 0 15px;
+    }
+    
+    /* Adjust grids to avoid horizontal scrolling or squeezed cards */
+    .events-grid, 
+    .gallery-grid,
+    .services-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .social-grid {
+         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .contact-container {
+        padding: 20px;
+    }
+    
+    .contact-bar {
+        padding: 15px;
+    }
+    
+    .contact-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 15px;
+        font-size: 1.2rem; /* Reduce icon size slightly if needed */
+    }
+    
+    .contact-platform {
+        font-size: 1.1rem;
+    }
+    
+    .contact-detail {
+        font-size: 0.9rem;
+        word-break: break-word; /* Prevent long emails/URLs from overflowing */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 30px 10px;
+    }
+
+    .profile-img-container {
+        width: 160px;
+        height: 160px;
+    }
+
+    .profile-name {
+        font-size: 2rem;
+    }
+    
+    .social-grid {
+        grid-template-columns: 1fr; /* Force 1 column on very small screens */
+    }
+    
+    .contact-bar {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .contact-icon {
+        margin-right: 0;
+        margin-bottom: 5px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .contact-button {
+        width: 100%; /* Full width button for easier tapping */
+        margin-top: 5px;
+    }
+    
+    .action-buttons {
+        gap: 15px;
+    }
+    
+    .action-btn {
+        min-width: 100%;
+        font-size: 1.1rem;
+    }
+    
+    .event-card, .gallery-item {
+        border-radius: 12px;
+    }
+    
+    .section-title {
+        font-size: 1.6rem;
+    }
+    
+    /* Adjust padding for cards to save space */
+    .event-content {
+        padding: 20px;
+    }
+    
+    .share-btn {
+        width: 100%;
+        justify-content: center;
     }
 }
