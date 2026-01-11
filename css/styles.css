@@ -807,10 +807,12 @@ footer {
 }
 
 .terms-title {
-    font-size: 1.6rem;
-    font-weight: 700;
+    font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--text);
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
     text-align: center;
 }
 
@@ -1040,5 +1042,301 @@ footer {
     
     .terms-content {
         padding: 20px 15px;
+    }
+}
+/* ================== COLLABORATIONS & SPONSORS ================== */
+.collaborations-section .events-grid,
+.sponsors-section .events-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.collaborations-section .event-card,
+.sponsors-section .event-card {
+    transform: scale(0.95);
+    transform-origin: center top;
+}
+
+.collaborations-section .square-img-container,
+.sponsors-section .square-img-container {
+    height: auto;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+}
+
+.square-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.5s ease;
+}
+
+.square-img-container:hover .square-img {
+    transform: scale(1.1);
+}
+
+.collaborations-section .event-content,
+.sponsors-section .event-content {
+    padding: 15px;
+}
+
+.collaborations-section .event-title,
+.sponsors-section .event-title {
+    font-size: 1.2rem;
+}
+
+.collaborations-section .event-description,
+.sponsors-section .event-description {
+    font-size: 0.9rem;
+}
+
+.collaboration-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(90deg, #00aaff, #00ccff);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.sponsor-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(90deg, #00cc99, #00ffcc);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.collaboration-tag {
+    background: rgba(0, 170, 255, 0.2);
+    color: #00aaff;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.sponsor-tag {
+    background: rgba(0, 204, 153, 0.2);
+    color: #00ffcc;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.collaboration-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00aaff, #00ccff);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.sponsor-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 25px;
+    background: linear-gradient(90deg, #00cc99, #00ffcc);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.collaboration-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 170, 255, 0.4);
+}
+
+.sponsor-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 204, 153, 0.4);
+}
+
+@media (max-width: 768px) {
+    .collaborations-section .events-grid,
+    .sponsors-section .events-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .collaborations-section .events-grid,
+    .sponsors-section .events-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .collaborations-section .event-card,
+    .sponsors-section .event-card {
+        transform: scale(1);
+    }
+}
+
+/* ================== TRUST SECTION ================== */
+.trust-section {
+    background: var(--section-bg);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 40px 30px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.8s ease-out forwards;
+    opacity: 0;
+    animation-delay: 0.4s;
+    overflow: hidden;
+}
+
+.trust-carousel {
+    position: relative;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+.trust-carousel-track {
+    display: flex;
+    gap: 30px;
+    animation: scrollCarousel 40s linear infinite;
+    width: max-content;
+}
+
+.trust-card {
+    flex: 0 0 auto;
+    width: 180px;
+    background: rgba(72, 0, 255, 0.15);
+    border-radius: 16px;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.trust-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(72, 0, 255, 0.3);
+    background: rgba(179, 0, 255, 0.15);
+}
+
+.trust-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 20px rgba(72, 0, 255, 0.4);
+}
+
+.trust-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trust-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--text);
+}
+
+.trust-role {
+    font-size: 0.9rem;
+    color: var(--accent-light);
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.trust-quote {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-style: italic;
+    line-height: 1.4;
+    margin-top: 10px;
+}
+
+.trust-quote i {
+    color: var(--accent-light);
+    margin: 0 5px;
+}
+
+@keyframes scrollCarousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-33.333%);
+    }
+}
+
+.trust-carousel:hover .trust-carousel-track {
+    animation-play-state: paused;
+}
+
+@media (max-width: 768px) {
+    .trust-card {
+        width: 160px;
+        padding: 20px 15px;
+    }
+    
+    .trust-avatar {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .trust-name {
+        font-size: 1rem;
+    }
+    
+    .trust-quote {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .trust-card {
+        width: 140px;
+        padding: 15px 12px;
+    }
+    
+    .trust-avatar {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .trust-name {
+        font-size: 0.9rem;
+    }
+    
+    .trust-role {
+        font-size: 0.8rem;
+    }
+    
+    .trust-quote {
+        font-size: 0.75rem;
     }
 }

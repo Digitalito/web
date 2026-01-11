@@ -1,0 +1,29 @@
+{
+  "routes": [
+    {
+      "src": "/portafolio",
+      "dest": "/portfolio.html",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/terms-of-service",
+      "dest": "/terms.html",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/contacto",
+      "dest": "/contacto.html",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/eventos-y-colaboraciones",
+      "dest": "/eventos-y-colaboraciones.html",
+      "methods": ["GET"]
+    },
+    {
+      "src": "/(youtube|tiktok|instagram|twitter|discord|twitch|kick)",
+      "dest": "/index.html",
+      "methods": ["GET"]
+    }
+  ]
+}

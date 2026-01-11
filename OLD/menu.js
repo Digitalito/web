@@ -1,7 +1,6 @@
 // Función para cargar el menú hamburguesa
 function loadMenu() {
     // Crear elementos del menú
-    // Used relative paths for local dev compatibility
     const menuHTML = `
         <button class="menu-toggle" id="menuToggle">
             <span></span>
@@ -20,22 +19,22 @@ function loadMenu() {
             <nav class="menu-nav">
                 <ul class="menu-list">
                     <li class="menu-item">
-                        <a href="/" class="menu-link">
+                        <a href="https://tutodigital.vercel.app/" class="menu-link">
                             <i class="fas fa-user"></i> Biografía
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/eventos-y-colaboraciones" class="menu-link">
+                        <a href="https://tutodigital.vercel.app/eventos-y-colaboraciones" class="menu-link">
                             <i class="fas fa-calendar-alt"></i> Eventos y Colaboraciones
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/contacto" class="menu-link">
+                        <a href="https://tutodigital.vercel.app/contacto" class="menu-link">
                             <i class="fas fa-envelope"></i> Contacto
                         </a>
                     </li>
                     <li class="menu-item">
-                        <a href="/portafolio" class="menu-link">
+                        <a href="https://tutodigital.vercel.app/portafolio" class="menu-link">
                             <i class="fas fa-briefcase"></i> Comisiones
                         </a>
                     </li>

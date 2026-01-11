@@ -4,20 +4,169 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Términos de Servicio - Digital</title>
-    
-    <!-- Enlaces a CSS -->
-    <link rel="stylesheet" href="css/menu.css">
-    <link rel="stylesheet" href="css/styles.css">
-    
+    <!-- Enlace al CSS del menú -->
+    <link rel="stylesheet" href="menu.css">
+        <!-- Versión actualizada de Font Awesome 6.5.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4800ff;
+            --primary-light: #6a33ff;
+            --accent: #b300ff;
+            --text: #ffffff;
+            --text-secondary: #e0d6ff;
+            --background: #0c0e1d;
+            --card-bg: rgba(23, 17, 52, 0.7);
+        }
+
+        body {
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
+                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(72, 0, 255, 0.4);
+        }
+
+        .terms-content {
+            background: rgba(15, 10, 40, 0.5);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: var(--accent-light);
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 25px 0 10px;
+            color: var(--text);
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            padding-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            color: var(--text-secondary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 1.05rem;
+            opacity: 0.7;
+            margin-top: 20px;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            h2 {
+                font-size: 1.3rem;
+            }
+            
+            .terms-content {
+                padding: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1 class="terms-title">Términos de Servicio</h1>
+            <h1>Términos de Servicio</h1>
             <p>Última actualización: 16 de Agosto, 2025</p>
         </header>
         
@@ -75,7 +224,7 @@
         </footer>
 
         <!-- Script del menú hamburguesa -->
-        <script src="js/menu.js"></script>
+<script src="menu.js"></script>
     </div>
 </body>
 </html>
