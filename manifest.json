@@ -1,0 +1,22 @@
+{
+  "name": "Digital | Redes",
+  "short_name": "Digital",
+  "description": "Enlaces a todas mis redes sociales de Digital",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c0e1d",
+  "theme_color": "#4800ff",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/images/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/images/icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

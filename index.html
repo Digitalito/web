@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        <!-- Enlace al manifest.json (PWA) -->
+    <!-- Enlace al manifest.json (PWA) -->
     <link rel="manifest" href="manifest.json">
     
     <!-- Enlace al CSS del menú -->
-    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="css/menu.css">
+    
+    <!-- Enlace a los estilos principales -->
+    <link rel="stylesheet" href="css/styles.css">
     
     <!-- Meta tags adicionales para PWA -->
     <meta name="theme-color" content="#4800ff">
@@ -14,10 +17,10 @@
     <meta name="apple-mobile-web-app-title" content="Digital">
     
     <!-- Iconos para iOS -->
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
     
     <!-- Favicon para navegadores -->
-    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="icon" type="image/png" href="assets/images/icon-192.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Digital | Redes Sociales</title>
@@ -33,7 +36,7 @@
     <meta name="twitter:creator" content="@tutodigital_">
     <meta name="twitter:title" content="Digital | Enlace a todas mis redes">
     <meta name="twitter:description" content="YouTube, Twitch, TikTok, Instagram y más. ¡Contenido gaming diario y directos en vivo!">
-    <meta name="twitter:image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
+    <meta name="twitter:image" content="https://tutodigital.vercel.app/assets/images/screenshot1.png?v=3">
     <meta name="twitter:image:alt" content="Perfil completo de redes sociales de Digital">
     
     <!-- Open Graph (compatible con Discord, WhatsApp, etc.) -->
@@ -41,7 +44,7 @@
     <meta property="og:url" content="https://tutodigital.vercel.app/">
     <meta property="og:title" content="Digital | Enlace a todas mis redes">
     <meta property="og:description" content="Conecta conmigo en todas mis plataformas de contenido gaming y streaming">
-    <meta property="og:image" content="https://tutodigital.vercel.app/screenshot1.png?v=3">
+    <meta property="og:image" content="https://tutodigital.vercel.app/assets/images/screenshot1.png?v=3">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="Digital">
@@ -49,375 +52,6 @@
     <!-- Configuración adicional importante -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://tutodigital.vercel.app/">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #4800ff;
-            --primary-light: #6a33ff;
-            --primary-dark: #3300cc;
-            --accent: #b300ff;
-            --accent-light: #cc33ff;
-            --accent-blue: #00aaff;
-            --text: #ffffff;
-            --text-secondary: #e0d6ff;
-            --background: #0c0e1d;
-            --card-bg: rgba(23, 17, 52, 0.7);
-            --star-color: rgba(255, 255, 255, 0.8);
-        }
-
-        body {
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(72, 0, 255, 0.4), transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(179, 0, 255, 0.3), transparent 35%),
-                linear-gradient(135deg, #0a0720 0%, #110c3a 50%, #0a0720 100%);
-            background-size: cover;
-            background-attachment: fixed;
-            min-height: 100vh;
-            color: var(--text);
-            overflow-x: hidden;
-            position: relative;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .star {
-            position: absolute;
-            background: var(--star-color);
-            border-radius: 50%;
-            animation: 
-                twinkle calc(var(--duration) * 1s) infinite ease-in-out,
-                move calc(var(--move-duration) * 1s) infinite linear;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.1); }
-        }
-
-        @keyframes move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(var(--move-x), var(--move-y)); }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 20px;
-        }
-
-        .profile-container {
-            display: inline-block;
-            position: relative;
-            margin-bottom: 25px;
-            animation: float 4s ease-in-out infinite;
-        }
-
-        .profile-img-container {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 40px var(--primary);
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .profile-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            transition: transform 0.4s ease;
-        }
-
-        .profile-img-container:hover {
-            box-shadow: 0 0 60px var(--primary-light);
-        }
-
-        .profile-img-container:hover .profile-img {
-            transform: scale(1.05);
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .profile-name {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin: 20px 0 15px;
-            background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
-            letter-spacing: -0.5px;
-            animation: fadeIn 0.8s ease-out forwards, shine 4s infinite ease-in-out;
-            opacity: 0;
-            animation-delay: 0.1s;
-        }
-
-        @keyframes shine {
-            0%, 100% { 
-                background-position: 0% 50%;
-                text-shadow: 0 0 15px rgba(72, 0, 255, 0.4);
-            }
-            50% { 
-                background-position: 100% 50%;
-                text-shadow: 0 0 25px rgba(179, 0, 255, 0.6);
-            }
-        }
-
-        .profile-subtitle {
-            font-size: 1.4rem;
-            font-weight: 400;
-            margin-bottom: 30px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-            color: var(--text-secondary);
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.2s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .highlight {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-weight: 600;
-        }
-
-        .social-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-            margin-bottom: 60px;
-        }
-
-        .social-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(12px);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 30px;
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-        }
-
-        .social-card:nth-child(1) { animation-delay: 0.1s; }
-        .social-card:nth-child(2) { animation-delay: 0.2s; }
-        .social-card:nth-child(3) { animation-delay: 0.3s; }
-        .social-card:nth-child(4) { animation-delay: 0.4s; }
-        .social-card:nth-child(5) { animation-delay: 0.1s; }
-        .social-card:nth-child(6) { animation-delay: 0.2s; }
-        .social-card:nth-child(7) { animation-delay: 0.3s; }
-        .social-card:nth-child(8) { animation-delay: 0.4s; }
-
-        .social-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .social-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-        }
-
-        .social-icon {
-            font-size: 3.2rem;
-            margin-bottom: 22px;
-            transition: transform 0.4s ease;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            height: 64px;
-        }
-
-        /* Estilo específico para el icono de X/Twitter */
-        .social-icon .fa-x-twitter {
-            color: white;
-            font-size: 2.8rem;
-        }
-
-        .social-icon-img {
-            width: 48px;
-            height: 48px;
-            object-fit: contain;
-        }
-
-        .social-card:hover .social-icon {
-            transform: scale(1.2);
-        }
-
-        .social-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: var(--text);
-        }
-
-        .social-username {
-            font-size: 1.15rem;
-            opacity: 0.85;
-            margin-bottom: 25px;
-            color: var(--text-secondary);
-            font-weight: 400;
-        }
-
-        .social-btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            font-size: 1.05rem;
-            letter-spacing: 0.5px;
-            box-shadow: 0 5px 20px rgba(72, 0, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .social-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-light), var(--accent-light));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
-
-        .social-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(72, 0, 255, 0.6);
-        }
-
-        .social-btn:hover::before {
-            opacity: 1;
-        }
-
-        .social-btn i {
-            margin-right: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-            font-size: 1.05rem;
-            opacity: 0.7;
-            margin-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: var(--text-secondary);
-            animation: fadeIn 0.8s ease-out forwards;
-            opacity: 0;
-            animation-delay: 0.5s;
-        }
-
-        @media (max-width: 768px) {
-            .profile-name {
-                font-size: 2.8rem;
-            }
-            
-            .profile-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .social-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .profile-img-container {
-                width: 180px;
-                height: 180px;
-            }
-            
-            .social-card {
-                padding: 25px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-name {
-                font-size: 2.3rem;
-                line-height: 1.2;
-                margin-top: 15px;
-                margin-bottom: 10px;
-                letter-spacing: -0.3px;
-                background-size: 200% 200%;
-            }
-            
-            .profile-subtitle {
-                font-size: 1rem;
-                margin-bottom: 20px;
-                padding: 0 15px;
-            }
-            
-            .social-btn {
-                padding: 12px 25px;
-                font-size: 0.95rem;
-            }
-            
-            .social-icon .fa-x-twitter {
-                font-size: 2.5rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="stars" id="stars"></div>
@@ -426,7 +60,7 @@
         <header>
             <div class="profile-container">
                 <div class="profile-img-container">
-                    <img src="https://i.imgur.com/b2ugKLU.png" alt="Digital" class="profile-img">
+                    <img src="https://i.imgur.com/z6rPcHq.png" alt="Digital" class="profile-img">
                 </div>
             </div>
             <h1 class="profile-name">Digital</h1>
@@ -550,49 +184,10 @@
         </footer>
     </div>
 
-    <script>
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const starCount = 150;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const size = Math.random() * 2 + 0.5;
-                const duration = (Math.random() * 3 + 1).toFixed(1);
-                const moveDuration = (Math.random() * 30 + 20).toFixed(1);
-                const moveX = (Math.random() * 100 - 50).toFixed(0) + 'px';
-                const moveY = (Math.random() * 100 - 50).toFixed(0) + 'px';
-                const brightness = 0.3 + Math.random() * 0.5;
-                
-                star.style.left = posX + 'vw';
-                star.style.top = posY + 'vh';
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                star.style.opacity = brightness;
-                star.style.setProperty('--duration', duration);
-                star.style.setProperty('--move-duration', moveDuration);
-                star.style.setProperty('--move-x', moveX);
-                star.style.setProperty('--move-y', moveY);
-                
-                starsContainer.appendChild(star);
-            }
-        }
-        
-        window.addEventListener('load', createStars);
-    </script>
-    <script>
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-          navigator.serviceWorker.register('sw.js')
-            .then(registration => console.log('SW registrado:', registration))
-            .catch(error => console.log('Error al registrar SW:', error));
-        });
-      }
-    </script>
+    <!-- Scripts -->
+    <script src="js/stars.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
     
     <!-- CÓDIGO DE KO-FI -->
     <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
@@ -604,114 +199,6 @@
         'floating-chat.donateButton.text-color': '#fff'
       });
     </script>
-
-    <!-- CÓDIGO SHARE BOTTOM -->
-  <script>
-    document.getElementById('share-btn').addEventListener('click', async () => {
-      const shareData = {
-        title: 'Digital | Redes Sociales',
-        text: 'Conecta conmigo en todas mis plataformas 🎮',
-        url: window.location.href
-      };
-      if (navigator.share) {
-        try { await navigator.share(shareData); }
-        catch(err) { console.warn('Compartir cancelado', err); }
-      } else {
-        try {
-          await navigator.clipboard.writeText(window.location.href);
-          alert('Enlace copiado al portapapeles ✅');
-        } catch (err) {
-          alert('No se pudo copiar el enlace 😢');
-        }
-      }
-    });
-  </script>
-
-<script>
-    // Mapeo de rutas a URLs finales
-    const redirectMap = {
-        '/discord': 'https://dsc.gg/digitalgalaxy/',
-        '/youtube': 'https://www.youtube.com/channel/UCXl48fi70tadw2BwzuU6DtQ?sub_confirmation=1',
-        '/tiktok': 'https://www.tiktok.com/@tutodigital_',
-        '/instagram': 'https://www.instagram.com/TutoDigital_/',
-        '/twitter': 'https://twitter.com/tutodigital_',
-        '/twitch': 'https://www.twitch.tv/tutodigital_',
-        '/kick': 'https://kick.com/tutodigital',
-        '/portafolio': 'https://tutodigital.vercel.app/portafolio'
-    };
-
-    // Función para manejar redirecciones
-    function handleRedirects() {
-        const currentPath = window.location.pathname;
-        
-        if (redirectMap[currentPath]) {
-            // Mostrar mensaje de redirección
-            document.body.innerHTML = `
-                <style>
-                    .redirect-message {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        background: var(--background);
-                        z-index: 1000;
-                        font-family: 'Montserrat', sans-serif;
-                    }
-                    .spinner {
-                        width: 50px;
-                        height: 50px;
-                        border: 5px solid rgba(255,255,255,0.3);
-                        border-radius: 50%;
-                        border-top-color: var(--primary);
-                        animation: spin 1s ease-in-out infinite;
-                        margin-bottom: 20px;
-                    }
-                    @keyframes spin {
-                        to { transform: rotate(360deg); }
-                    }
-                </style>
-                <div class="redirect-message">
-                    <div class="spinner"></div>
-                    <h2>Redirigiendo...</h2>
-                </div>
-            `;
-            
-            // Redirigir después de 1.5 segundos
-            setTimeout(() => {
-                window.location.replace(redirectMap[currentPath]);
-            }, 1500);
-            return;
-        }
-        
-        // Agregar event listeners para los enlaces
-        document.querySelectorAll('.social-btn').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const path = this.getAttribute('href');
-                
-                // Animación de carga
-                document.body.style.opacity = '0.7';
-                document.body.style.transition = 'opacity 0.3s ease';
-                
-                // Redirigir después de un breve retraso
-                setTimeout(() => {
-                    window.location.href = redirectMap[path];
-                }, 300);
-            });
-        });
-    }
-    
-    // Llamar a la función cuando la página esté cargada
-    window.addEventListener('DOMContentLoaded', handleRedirects);
-</script>
-
-<!-- Script del menú hamburguesa -->
-<script src="menu.js"></script>
 
 </body>
 </html>

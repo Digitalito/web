@@ -1,0 +1,24 @@
+{
+  "rewrites": [
+    {
+      "source": "/portafolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/contacto",
+      "destination": "/contacto.html"
+    },
+    {
+      "source": "/eventos-y-colaboraciones",
+      "destination": "/eventos.html"
+    },
+    {
+      "source": "/terms-of-service",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/(youtube|tiktok|instagram|twitter|discord|twitch|kick)",
+      "destination": "/index.html"
+    }
+  ]
+}
