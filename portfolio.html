@@ -21,7 +21,7 @@
         <header>
             <div class="profile-container">
                 <div class="profile-img-container">
-                    <img src="https://i.imgur.com/z6rPcHq.png" alt="Digital" class="profile-img">
+                    <img src="assets/images/icon.png" alt="Digital" class="profile-img" loading="lazy">
                 </div>
             </div>
             <h1 class="profile-name">Digital Portafolio</h1>
@@ -32,20 +32,136 @@
         
         <div class="gallery-section">
             <h2 class="section-title">Mis Trabajos</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/z3R5KXw.png" alt="Minecraft Thumbnail" class="gallery-img">
-                    <div class="gallery-caption">Miniatura para YouTube</div>
+            
+            <!-- Vista de Categorías Principales -->
+            <div class="gallery-grid" id="main-categories">
+                <div class="gallery-item" data-category="minis">
+                    <img src="https://i.imgur.com/fKfOLj8.png" alt="Minecraft Thumbnail" loading="lazy" class="gallery-img">
+                    <div class="gallery-caption">Miniaturas para YouTube</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/6Q9erEZ.png" alt="Minecraft Banner" class="gallery-img">
-                    <div class="gallery-caption">Banner para Redes</div>
+                <div class="gallery-item" data-category="banners">
+                    <img src="https://i.imgur.com/W8rnKhc.png" alt="Minecraft Banner" loading="lazy" class="gallery-img">
+                    <div class="gallery-caption">Banners para Redes</div>
                 </div>
-                <div class="gallery-item">
-                    <img src="https://i.imgur.com/aX3w7He.png" alt="Minecraft Logo" class="gallery-img">
-                    <div class="gallery-caption">Logo para Canal</div>
+                <div class="gallery-item" data-category="logos">
+                    <img src="https://i.imgur.com/aX3w7He.png" alt="Minecraft Logo" loading="lazy" class="gallery-img">
+                    <div class="gallery-caption">Logos para Canal</div>
                 </div>
             </div>
+
+            <!-- Vista Dinámica Secundaria (Oculta por defecto) -->
+            <div class="category-view is-hidden" id="category-view-container">
+                <div class="category-header">
+                    <button class="back-btn" id="back-to-categories">
+                        <i class="fas fa-arrow-left"></i> Volver
+                    </button>
+                    <h3 class="category-title" id="current-category-title">Categoría</h3>
+                </div>
+                
+                <!-- Sub Rejillas Nativas -->
+                <div class="gallery-grid is-hidden" id="grid-minis">
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/n8bRO8k.png" alt="Miniatura 1" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/JkTW2sz.png" alt="Miniatura 2" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/LPFnUKx.png" alt="Miniatura 3" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/lVQnDoy.png" alt="Miniatura 4" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/0eoP1l0.png" alt="Miniatura 5" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/WuY4IR3.png" alt="Miniatura 6" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/sEYUQa4.png" alt="Miniatura 7" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/H8oapjL.png" alt="Miniatura 8" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/P0GJV14.png" alt="Miniatura 9" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/Sh9hL2b.png" alt="Miniatura 10" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/ycnn4eM.png" alt="Miniatura 11" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/nqgsciE.png" alt="Miniatura 12" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/r0Z0qJW.png" alt="Miniatura 13" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/XwPW4p8.png" alt="Miniatura 14" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/wZWaJg8.png" alt="Miniatura 15" loading="lazy" class="gallery-img">
+                    </div>
+                </div>
+                
+                <div class="gallery-grid is-hidden" id="grid-banners">
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/eEKWyqB.png" alt="Banner 1" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/Wl5BD50.png" alt="Banner 2" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/DQ2ZC1c.png" alt="Banner 3" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/U5G0mqM.png" alt="Banner 4" loading="lazy" class="gallery-img">
+                    </div>
+                </div>
+                
+                <div class="gallery-grid is-hidden" id="grid-logos">
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/qid6jA5.png" alt="Logo 2" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/p7IG4D0.png" alt="Logo 3" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/vGo6U7t.png" alt="Logo 4" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/0gf9J4c.png" alt="Logo 5" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/RUlr6UM.png" alt="Logo 6" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/id51LMH.png" alt="Logo 7" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/BvHRkBI.png" alt="Logo 8" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/EqppVqU.png" alt="Logo 9" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/NY0R1F8.png" alt="Logo 10" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/csYrMnn.png" alt="Logo 11" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/6KADFcr.png" alt="Logo 12" loading="lazy" class="gallery-img">
+                    </div>
+                    <div class="gallery-item category-target">
+                        <img src="https://i.imgur.com/5T9w7iv.png" alt="Logo 13" loading="lazy" class="gallery-img">
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- Trust Section from old/portfolio.html -->
@@ -164,6 +280,15 @@
         </footer>
     </div>
 
+    <!-- Lightbox Fullscreen (Isolated Stacking Context) -->
+    <div class="gallery-lightbox is-hidden" id="portfolio-lightbox">
+        <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+        <img src="" alt="Vista a pantalla completa" class="lightbox-img" id="lightbox-main-img">
+    </div>
+
+
     <script>
         const trustPeople = [
             {
@@ -209,7 +334,7 @@
                 card.className = 'trust-card';
                 card.innerHTML = `
                     <div class="trust-avatar">
-                        <img src="${person.avatar}" alt="${person.name}">
+                        <img src="${person.avatar}" alt="${person.name}" loading="lazy">
                     </div>
                     <h4 class="trust-name">${person.name}</h4>
                     <p class="trust-role">${person.role}</p>
