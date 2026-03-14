@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <!-- Enlace al CSS del menú -->
-    <link rel="stylesheet" href="css/menu.css">
-    
-    <!-- Enlace a los estilos principales -->
-    <link rel="stylesheet" href="css/styles.css">
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital | Contacto</title>
+    <title>Contacto | Digital</title>
+    <meta name="description" content="Contacta a Digital para patrocinios, colaboraciones o consultas. Responde en menos de 48 horas.">
+    <link rel="icon" type="image/png" href="assets/images/icon-192.png">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4800ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Digital">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="icon" type="image/png" href="assets/images/icon-192.png">
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="assets/images/icon.png">
+
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="Contacto | Digital">
+    <meta property="og:description" content="Contacta a Digital para patrocinios, colaboraciones o consultas. Responde en menos de 48 horas.">
+    <meta property="og:image" content="https://tutodigital.vercel.app/assets/images/icon.png">
+    <meta property="og:url" content="https://tutodigital.vercel.app/contacto">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tutodigital.vercel.app/contacto">
+    <meta name="robots" content="index, follow">
 </head>
 <body>
     <div class="stars" id="stars"></div>
@@ -23,12 +46,15 @@
         <header>
             <div class="profile-container">
                 <div class="profile-img-container">
-                    <img src="assets/images/icon.png" alt="Digital" class="profile-img">
+                    <img src="assets/images/icon.png" alt="Foto de perfil de Digital" class="profile-img" loading="eager" decoding="async">
                 </div>
             </div>
-            <h1 class="profile-name">Contacto</h1>
+            <h1 class="profile-name">Digital</h1>
             <p class="profile-subtitle">
-                Para consultas profesionales, colaboraciones o cualquier asunto formal, no dude en ponerse en contacto conmigo a través de los siguientes canales.
+                ¿Quieres colaborar, patrocinar un evento o simplemente hablar? Escríbeme por cualquiera de estos canales.
+            </p>
+            <p class="response-time-note">
+                Tiempo de respuesta estimado: menos de 48 horas
             </p>
         </header>
         
@@ -38,11 +64,12 @@
             <!-- Correo electrónico -->
             <div class="contact-bar">
                 <div class="contact-icon" style="background: rgba(212, 70, 56, 0.15); color: #D44638;">
-                    <i class="fas fa-envelope fa-lg"></i>
+                    <i class="fas fa-envelope fa-lg" aria-hidden="true"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-platform">Correo Electrónico</div>
                     <div class="contact-detail">tutodigital@proton.me</div>
+                    <p class="contact-desc">Para patrocinios, marcas y contacto profesional</p>
                 </div>
                 <a href="mailto:tutodigital@proton.me" class="contact-button">Enviar Email</a>
             </div>
@@ -50,11 +77,12 @@
             <!-- Discord -->
             <div class="contact-bar">
                 <div class="contact-icon" style="background: rgba(88, 101, 242, 0.15); color: #5865F2;">
-                    <i class="fab fa-discord fa-lg"></i>
+                    <i class="fab fa-discord fa-lg" aria-hidden="true"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-platform">Discord</div>
                     <div class="contact-detail">@tutodigital</div>
+                    <p class="contact-desc">Para la comunidad y contacto general</p>
                 </div>
                 <a href="/discord" class="contact-button">Unirse al Servidor</a>
             </div>
@@ -62,11 +90,12 @@
             <!-- Twitter/X -->
             <div class="contact-bar">
                 <div class="contact-icon" style="background: rgba(0, 0, 0, 0.15); color: #ffffff;">
-                    <i class="fab fa-x-twitter fa-lg"></i>
+                    <i class="fab fa-x-twitter fa-lg" aria-hidden="true"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-platform">X (Twitter)</div>
                     <div class="contact-detail">@tutodigital_</div>
+                    <p class="contact-desc">Para contacto general</p>
                 </div>
                 <a href="/twitter" class="contact-button">Enviar Mensaje</a>
             </div>
@@ -74,25 +103,26 @@
             <!-- Instagram -->
             <div class="contact-bar">
                 <div class="contact-icon" style="background: rgba(225, 48, 108, 0.15); color: #E1306C;">
-                    <i class="fab fa-instagram fa-lg"></i>
+                    <i class="fab fa-instagram fa-lg" aria-hidden="true"></i>
                 </div>
                 <div class="contact-info">
                     <div class="contact-platform">Instagram</div>
                     <div class="contact-detail">@TutoDigital_</div>
+                    <p class="contact-desc">Para contacto general</p>
                 </div>
                 <a href="/instagram" class="contact-button">Enviar DM</a>
             </div>
         </div>
         
-        <div style="text-align: center; margin-bottom: 30px;">
-            <a href="/" style="color: white; text-decoration: none; font-weight: 600;">
-                <i class="fas fa-arrow-left"></i> Volver al Inicio
+        <div class="share-btn-container">
+            <a href="/" class="back-link">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al Inicio
             </a>
         </div>
                 
         <footer>
             <p>© 2025 Digital. Todos los derechos reservados.</p>
-            <p>Contáctame: <a href="mailto:tutodigital@proton.me">tutodigital@proton.me</a></p>
+            <p>Contáctame: <a href="mailto:tutodigital@proton.me" style="color:inherit; text-decoration:underline">tutodigital@proton.me</a></p>
         </footer>
     </div>
 
@@ -100,5 +130,6 @@
     <script src="js/stars.js"></script>
     <script src="js/main.js"></script>
     <script src="js/menu.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

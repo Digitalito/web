@@ -1,18 +1,43 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="icon" type="image/png" href="assets/images/icon-192.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital | Portafolio</title>
+    <title>Portafolio de Diseño | Digital</title>
+    <meta name="description" content="Portafolio de miniaturas, banners e iconos para YouTube y redes sociales. Diseños de Minecraft profesionales por Digital (TutoDigital).">
+    <link rel="icon" type="image/png" href="assets/images/icon-192.png">
+    
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4800ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Digital">
+    <link rel="apple-touch-icon" href="assets/images/icon-192.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Enlaces a CSS -->
+    <!-- CSS -->
     <link rel="stylesheet" href="css/menu.css">
     <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Preload -->
+    <link rel="preload" as="image" href="assets/images/icon.png">
+
+    <!-- SEO & Social Media Meta Tags -->
+    <meta property="og:title" content="Portafolio | Digital">
+    <meta property="og:description" content="Portafolio de miniaturas, banners e iconos para YouTube y redes sociales. Diseños de Minecraft profesionales por Digital (TutoDigital).">
+    <meta property="og:image" content="https://i.imgur.com/fKfOLj8.png">
+    <meta property="og:url" content="https://tutodigital.vercel.app/portfolio">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://tutodigital.vercel.app/portfolio">
+    <meta name="robots" content="index, follow">
 </head>
 <body>
     <div class="stars" id="stars"></div>
@@ -21,12 +46,12 @@
         <header>
             <div class="profile-container">
                 <div class="profile-img-container">
-                    <img src="assets/images/icon.png" alt="Digital" class="profile-img" loading="lazy">
+                    <img src="assets/images/icon.png" alt="Foto de perfil de Digital" class="profile-img" loading="eager" decoding="async">
                 </div>
             </div>
-            <h1 class="profile-name">Digital Portafolio</h1>
+            <h1 class="profile-name">Digital</h1>
             <p class="profile-subtitle">
-                ¡Hola! Soy TutoDigital, mejor conocido como Digital. Soy un productor de contenido e influencer dedicado a ofrecer videos entretenidos, en formatos largos y cortos, sobre Minecraft. Además, también realizo directos en Twitch para interactuar en tiempo real con mi audiencia.
+                Diseñador de contenido visual para creadores de Minecraft. Miniaturas, banners e iconos que destacan tu canal.
             </p>
         </header>
         
@@ -35,16 +60,16 @@
             
             <!-- Vista de Categorías Principales -->
             <div class="gallery-grid" id="main-categories">
-                <div class="gallery-item" data-category="minis">
-                    <img src="https://i.imgur.com/fKfOLj8.png" alt="Minecraft Thumbnail" loading="lazy" class="gallery-img">
+                <div class="gallery-item" data-category="miniaturas">
+                    <img src="https://i.imgur.com/fKfOLj8.png" alt="Miniaturas para YouTube" class="gallery-img">
                     <div class="gallery-caption">Miniaturas para YouTube</div>
                 </div>
                 <div class="gallery-item" data-category="banners">
-                    <img src="https://i.imgur.com/W8rnKhc.png" alt="Minecraft Banner" loading="lazy" class="gallery-img">
+                    <img src="https://i.imgur.com/W8rnKhc.png" alt="Banners para Redes" class="gallery-img">
                     <div class="gallery-caption">Banners para Redes</div>
                 </div>
                 <div class="gallery-item" data-category="logos">
-                    <img src="https://i.imgur.com/aX3w7He.png" alt="Minecraft Logo" loading="lazy" class="gallery-img">
+                    <img src="https://i.imgur.com/aX3w7He.png" alt="Logos para Canal" class="gallery-img">
                     <div class="gallery-caption">Logos para Canal</div>
                 </div>
             </div>
@@ -53,146 +78,43 @@
             <div class="category-view is-hidden" id="category-view-container">
                 <div class="category-header">
                     <button class="back-btn" id="back-to-categories">
-                        <i class="fas fa-arrow-left"></i> Volver
+                        <i class="fas fa-arrow-left" aria-hidden="true"></i> Volver
                     </button>
                     <h3 class="category-title" id="current-category-title">Categoría</h3>
                 </div>
                 
-                <!-- Sub Rejillas Nativas -->
-                <div class="gallery-grid is-hidden" id="grid-minis">
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/n8bRO8k.png" alt="Miniatura 1" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/JkTW2sz.png" alt="Miniatura 2" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/LPFnUKx.png" alt="Miniatura 3" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/lVQnDoy.png" alt="Miniatura 4" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/0eoP1l0.png" alt="Miniatura 5" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/WuY4IR3.png" alt="Miniatura 6" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/sEYUQa4.png" alt="Miniatura 7" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/H8oapjL.png" alt="Miniatura 8" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/P0GJV14.png" alt="Miniatura 9" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/Sh9hL2b.png" alt="Miniatura 10" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/ycnn4eM.png" alt="Miniatura 11" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/nqgsciE.png" alt="Miniatura 12" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/r0Z0qJW.png" alt="Miniatura 13" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/XwPW4p8.png" alt="Miniatura 14" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/wZWaJg8.png" alt="Miniatura 15" loading="lazy" class="gallery-img">
-                    </div>
-                </div>
-                
-                <div class="gallery-grid is-hidden" id="grid-banners">
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/eEKWyqB.png" alt="Banner 1" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/Wl5BD50.png" alt="Banner 2" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/DQ2ZC1c.png" alt="Banner 3" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/U5G0mqM.png" alt="Banner 4" loading="lazy" class="gallery-img">
-                    </div>
-                </div>
-                
-                <div class="gallery-grid is-hidden" id="grid-logos">
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/qid6jA5.png" alt="Logo 2" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/p7IG4D0.png" alt="Logo 3" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/vGo6U7t.png" alt="Logo 4" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/0gf9J4c.png" alt="Logo 5" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/RUlr6UM.png" alt="Logo 6" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/id51LMH.png" alt="Logo 7" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/BvHRkBI.png" alt="Logo 8" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/EqppVqU.png" alt="Logo 9" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/NY0R1F8.png" alt="Logo 10" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/csYrMnn.png" alt="Logo 11" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/6KADFcr.png" alt="Logo 12" loading="lazy" class="gallery-img">
-                    </div>
-                    <div class="gallery-item category-target">
-                        <img src="https://i.imgur.com/5T9w7iv.png" alt="Logo 13" loading="lazy" class="gallery-img">
-                    </div>
-                </div>
+                <!-- Contenedores dinámicos -->
+                <div class="gallery-grid is-hidden" id="works-miniaturas"></div>
+                <div class="gallery-grid is-hidden" id="works-banners"></div>
+                <div class="gallery-grid is-hidden" id="works-logos"></div>
             </div>
-
         </div>
 
-        <!-- Trust Section from old/portfolio.html -->
+        <!-- Trust Section -->
         <div class="trust-section">
             <h2 class="section-title">Personas que confían en mí</h2>
-            <div class="trust-carousel">
-                <div class="trust-carousel-track" id="trust-carousel-track">
-                    <!-- Cards generated by JS -->
-                </div>
-            </div>
+            <div id="clients-grid"></div>
         </div>
         
         <div class="services-section">
             <h2 class="section-title">Mis Servicios</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-image"></i>
                     </div>
                     <h3 class="service-title">Miniaturas para YouTube</h3>
                     <p class="service-description">Diseño de miniaturas impactantes y llamativas que aumentan el CTR utilizando renders de Minecraft y efectos visuales profesionales.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-flag"></i>
                     </div>
                     <h3 class="service-title">Banners para Redes</h3>
                     <p class="service-description">Creación de banners atractivos que representan tu marca y atraen a más espectadores a tu canal.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">
+                    <div class="service-icon" aria-hidden="true">
                         <i class="fas fa-icons"></i>
                     </div>
                     <h3 class="service-title">Perfiles Distintivos</h3>
@@ -201,77 +123,36 @@
             </div>
             
             <div class="action-buttons">
-                <a href="https://x.com/TutoDigital_" class="action-btn" target="_blank">
-                    <i class="fas fa-pen-nib"></i>
-                    <span class="action-btn-text">CONTRATAR</span>
+                <a href="https://discord.com/users/957495492902813766" class="action-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-discord" aria-hidden="true"></i>
+                    <span class="action-btn-text">Contactar por Discord</span>
                 </a>
-                <a href="https://www.behance.net/tutodigital" class="action-btn" target="_blank">
-                    <i class="fas fa-palette"></i>
+                <a href="https://www.behance.net/tutodigital" class="action-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
                     <span class="action-btn-text">Ver Diseños</span>
                 </a>
-                <a href="https://ko-fi.com/tutodigital/commissions" class="action-btn" target="_blank">
-                    <i class="fas fa-tags"></i>
+                <a href="https://ko-fi.com/tutodigital/commissions" class="action-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-tags" aria-hidden="true"></i>
                     <span class="action-btn-text">Ver Precios</span>
                 </a>
             </div>
         </div>
         
         <div class="terms-section">
-            <h3 class="terms-title">Términos y Condiciones</h3>
-            <div class="terms-content">
-                <h3>1. Información General</h3>
-                <p>El artista se especializa en la creación de fotos de perfil, banners y miniaturas utilizando renders de Minecraft.</p>
-                <p>Todas las obras se realizan bajo pedido y personalización según las especificaciones del cliente.</p>
-                <p>El artista no realiza contenido NSFW (contenido explícito, sexual o inapropiado).</p>
-                
-                <h3>2. Proceso de Solicitud</h3>
-                <p>El cliente deberá proporcionar una descripción detallada de su pedido, incluyendo colores, temática, estilo, textos, y cualquier referencia visual que considere necesaria.</p>
-                <p>Cambios mayores en la idea inicial después de la aprobación podrán estar sujetos a cargos adicionales.</p>
-                
-                <h3>3. Tiempo de Entrega</h3>
-                <p>El tiempo estimado para completar una comisión dependerá de la complejidad de la obra y del volumen de pedidos en curso. Este será informado al cliente al momento de realizar el pedido.</p>
-                <p>Retrasos pueden ocurrir debido a imprevistos, pero el artista mantendrá comunicación constante con el cliente.</p>
-                
-                <h3>4. Pago</h3>
-                <p>Los pagos se aceptan a través de PayPal o Ko-Fi.</p>
-                <p>No se realizarán devoluciones después de que la obra esté completada y entregada.</p>
-                
-                <h3>5. Revisión y Modificaciones</h3>
-                <p>El cliente tendrá derecho a 2 revisiones gratuitas durante el proceso de creación.</p>
-                <p>Revisiones adicionales o cambios fuera del alcance del pedido inicial tendrán un costo extra.</p>
-                <p>Una vez entregada la obra final, no se realizarán cambios sin un cargo adicional.</p>
-                
-                <h3>6. Derechos de Autor y Uso de la Obra</h3>
-                <p>El artista conserva los derechos de autor de todas las obras creadas.</p>
-                <p>El cliente tiene permiso para usar la obra para fines personales o promocionales (en redes sociales, YouTube, Twitch, etc.), pero no para uso comercial (como revender o sublicenciar el arte) sin autorización escrita del artista.</p>
-                <p>El artista podrá publicar las obras en su portafolio o redes sociales, a menos que el cliente solicite explícitamente confidencialidad.</p>
-                
-                <h3>7. Prohibiciones</h3>
-                <p>Está prohibido reclamar la obra como propia o modificarla sin consentimiento del artista.</p>
-                <p>No se permite el uso del arte para fines ilegales, ofensivos, NSFW, o que infrinjan las reglas de las plataformas donde se publique.</p>
-                
-                <h3>8. Cancelaciones y Reembolsos</h3>
-                <p>Si el cliente decide cancelar la comisión antes de que el artista inicie el trabajo, se realizará un reembolso del 100%.</p>
-                <p>Si la cancelación ocurre después de iniciado el trabajo, no será reembolsado.</p>
-                <p>En caso de que el artista no pueda completar el pedido por razones personales, se realizará un reembolso completo.</p>
-                
-                <h3>9. Contacto y Comunicación</h3>
-                <p>Toda la comunicación deberá realizarse a través de los medios oficiales establecidos por el artista (correo electrónico, Discord, etc.).</p>
-                <p>Respuestas tardías por parte del cliente pueden afectar el tiempo de entrega.</p>
-                
-                <h3>10. Aceptación de los Términos</h3>
-                <p>Al solicitar una comisión, el cliente acepta automáticamente estos términos y condiciones.</p>
-            </div>
-            
-            <a href="/terms-of-service" class="terms-link">
+            <h2 class="section-title">Términos y Condiciones</h2>
+            <div id="terms-embed"></div>
+            <a href="terms.html" target="_blank" class="terms-link-btn">
                 Ver Términos de Servicio Completos
             </a>
         </div>
         
         <div class="share-btn-container">
             <button id="share-btn" class="share-btn">
-                <i class="fas fa-share-alt"></i> Compartir esta página
+                <i class="fas fa-share-alt" aria-hidden="true"></i> Compartir esta página
             </button>
+            <a href="/" class="back-link">
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> Volver al Inicio
+            </a>
         </div>
             
         <footer>
@@ -281,79 +162,27 @@
     </div>
 
     <!-- Lightbox Fullscreen (Isolated Stacking Context) -->
-    <div class="gallery-lightbox is-hidden" id="portfolio-lightbox">
-        <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar"><i class="fas fa-times"></i></button>
-        <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-        <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
-        <img src="" alt="Vista a pantalla completa" class="lightbox-img" id="lightbox-main-img">
+    <div class="gallery-lightbox is-hidden" id="portfolio-lightbox" role="dialog" aria-modal="true" aria-label="Visor de imágenes del portafolio">
+        <button class="lightbox-close" id="lightbox-close-btn" aria-label="Cerrar lightbox"><i class="fas fa-times" aria-hidden="true"></i></button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev-btn" aria-label="Imagen anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="lightbox-nav lightbox-next" id="lightbox-next-btn" aria-label="Imagen siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        <img src="" alt="Vista a pantalla completa de imagen del portafolio" class="lightbox-img" id="lightbox-main-img">
     </div>
 
-
-    <script>
-        const trustPeople = [
-            {
-                name: "Fleix",
-                role: "Youtuber",
-                avatar: "https://i.imgur.com/5hojLnN.png",
-                quote: "La miniatura está de locos"
-            },
-            {
-                name: "Lunnyk",
-                role: "Youtuber",
-                avatar: "https://i.imgur.com/wCKlI6U.png",
-                quote: "Las miniaturas tienen una calidad increíble y los tiempos de entrega son excelentes: rápido y muy profesional."
-            },
-            {
-                name: "Prismo",
-                role: "Youtuber",
-                avatar: "https://i.imgur.com/RSAhmdn.png",
-                quote: "pero muy buen trabajo el que haces! quedo muy satisfecho!"
-            },
-            {
-                name: "Danteh",
-                role: "Youtuber",
-                avatar: "https://yt3.googleusercontent.com/ex1aDoT9-xIUCIjPxAHWRQnW_Lc3hkz759c57cbJNRWEZ_1Docx2Dz5-3FuXkt21Y3CMre2Mhg=s160-c-k-c0x00ffffff-no-rj",
-                quote: "Demasiado buenas miniaturas, 10/10, creativas y rapidas."
-            },
-            {
-                name: "Los Chiskeados",
-                role: "Youtuber",
-                avatar: "https://i.imgur.com/cmTnUgW.png",
-                quote: "fue muy agradale, cumpliste a tiempo y hiciste los pedidos como queriamos"
-            }
-        ];
-
-        function createTrustCarousel() {
-            const carouselTrack = document.getElementById('trust-carousel-track');
-            if(!carouselTrack) return;
-            
-            const duplicatedPeople = [...trustPeople, ...trustPeople, ...trustPeople];
-            
-            duplicatedPeople.forEach(person => {
-                const card = document.createElement('div');
-                card.className = 'trust-card';
-                card.innerHTML = `
-                    <div class="trust-avatar">
-                        <img src="${person.avatar}" alt="${person.name}" loading="lazy">
-                    </div>
-                    <h4 class="trust-name">${person.name}</h4>
-                    <p class="trust-role">${person.role}</p>
-                    <p class="trust-quote"><i class="fas fa-quote-left"></i>${person.quote}<i class="fas fa-quote-right"></i></p>
-                `;
-                carouselTrack.appendChild(card);
-            });
-            
-            const cardWidth = 180;
-            const gap = 30;
-            const totalWidth = (cardWidth + gap) * duplicatedPeople.length;
-            carouselTrack.style.width = `${totalWidth}px`;
-        }
-
-        window.addEventListener('load', createTrustCarousel);
-    </script>
     <!-- Scripts -->
     <script src="js/stars.js"></script>
     <script src="js/main.js"></script>
     <script src="js/menu.js"></script>
+    <script defer src="data/works.js"></script>
+    <script defer src="data/clients.js"></script>
+    <script src="data/terms.js"></script>
+    <script src="js/portfolio.js"></script>
+    <script>
+      const embed = document.getElementById('terms-embed');
+      if (embed && typeof TERMS_CONTENT !== 'undefined') {
+        embed.innerHTML = TERMS_CONTENT;
+      }
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

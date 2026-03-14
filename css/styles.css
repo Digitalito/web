@@ -1,4 +1,4 @@
-﻿* {
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -22,9 +22,9 @@
   /* Apple-like Animations */
   --ease-apple-interaction: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-smooth-loop: cubic-bezier(0.4, 0.0, 0.2, 1);
-  --duration-fast: 120ms;
-  --duration-normal: 300ms;
-  --duration-slow: 400ms;
+  --duration-fast: 90ms;
+  --duration-normal: 220ms;
+  --duration-slow: 300ms;
 }
 
 body {
@@ -132,7 +132,7 @@ header {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
   }
 }
 
@@ -189,7 +189,7 @@ header {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(8px);
+    transform: translateY(5px);
   }
   to {
     opacity: 1;
@@ -224,7 +224,7 @@ header {
     position: relative;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-    animation: fadeIn 0.6s var(--ease-apple-interaction) forwards;
+    animation: fadeIn 0.45s var(--ease-apple-interaction) forwards;
     opacity: 0;
 }
 
@@ -1157,7 +1157,7 @@ footer {
 .trust-carousel-track {
   display: flex;
   gap: 30px;
-  animation: scrollCarousel 40s linear infinite;
+  animation: scrollCarousel 30s linear infinite;
   width: max-content;
 }
 
@@ -1232,6 +1232,8 @@ footer {
     transform: translateX(-33.333%);
   }
 }
+
+/* Nota: la duración del scrollCarousel se ajusta aquí */
 
 .trust-carousel:hover .trust-carousel-track {
   animation-play-state: paused;
@@ -1793,4 +1795,535 @@ body.no-scroll {
         opacity: 1 !important;
         transform: scale(1) !important;
     }
+}
+/* YouTube Videos Section - Refined for Social Card consistency */
+#latest-videos {
+  width: 100%;
+  max-width: 900px;
+  margin: 2rem auto 2.5rem auto;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+#latest-videos h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  margin-bottom: 25px;
+  background: linear-gradient(90deg, var(--text), var(--text-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+#videos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+
+.video-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: 16px; /* Consistent with .social-card */
+  overflow: hidden;
+  background: var(--card-bg); /* Consistent with .social-card */
+  backdrop-filter: blur(12px); /* Consistent with .social-card */
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.2);
+  transition: transform var(--duration-normal) var(--ease-apple-interaction), 
+              border-color var(--duration-normal) ease, 
+              box-shadow var(--duration-normal) ease;
+  width: 100%;
+}
+
+.video-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(138, 43, 226, 1);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.6);
+}
+
+.video-thumb-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.video-thumb-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--duration-slow) var(--ease-apple-interaction);
+}
+
+.video-card:hover .video-thumb-wrapper img {
+  transform: scale(1.04);
+}
+
+.video-play-icon {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  transition: opacity var(--duration-normal) ease;
+  border-radius: 16px 16px 0 0;
+}
+
+.video-card:hover .video-play-icon {
+  opacity: 1;
+}
+
+.video-title {
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #e0e0e0;
+  text-align: center;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+/* Responsive: en móvil una columna */
+@media (max-width: 768px) {
+  #videos-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+}
+
+
+/* ── MODIFICACIONES ANTIGRAVITY ── */
+
+/* 1. Correcciones de Ancho y Contenedores */
+.container, 
+.events-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+#sponsors-grid,
+.terms-section {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 2. Rediseño Compacto de Eventos */
+#events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.event-card {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.15);
+  transition: transform 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(138, 43, 226, 0.9);
+  box-shadow: 0 0 18px rgba(138, 43, 226, 0.45);
+}
+
+.event-card-image {
+  width: 150px;
+  min-width: 150px;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.event-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.event-card-date {
+  font-size: 0.70rem;
+  color: #9a9aaa;
+  margin: 0;
+}
+
+.event-card-title {
+  font-size: 0.92rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.event-card-desc {
+  font-size: 0.76rem;
+  color: #c0c0d0;
+  margin: 0;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.event-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.15rem;
+}
+
+.event-tag {
+  font-size: 0.65rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(138, 43, 226, 0.25);
+  color: #c9a0ff;
+  border: 1px solid rgba(138, 43, 226, 0.4);
+}
+
+.event-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
+}
+
+.event-btn {
+  font-size: 0.72rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(138, 43, 226, 0.7);
+  color: white;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.event-btn:hover {
+  background: rgba(138, 43, 226, 1);
+}
+
+.event-btn.unavailable {
+  background: rgba(255, 255, 255, 0.08);
+  color: #888;
+  cursor: default;
+  pointer-events: none;
+}
+
+@media (max-width: 500px) {
+  .event-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .event-card-image {
+    width: 100%;
+    height: 150px;
+  }
+}
+
+/* 3. Rediseño de Colaboradores */
+#collaborators-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.collab-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0.85rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.15);
+  gap: 0.35rem;
+  transition: transform 0.2s ease, border-color 0.2s ease,
+              box-shadow 0.2s ease;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+.collab-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(138, 43, 226, 0.9);
+  box-shadow: 0 0 18px rgba(138, 43, 226, 0.45);
+}
+
+.collab-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(138, 43, 226, 0.6);
+  flex-shrink: 0;
+}
+
+.collab-name {
+  font-size: 0.88rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0;
+  word-break: break-word;
+}
+
+.collab-desc {
+  font-size: 0.72rem;
+  color: #c0c0d0;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.collab-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.25rem;
+}
+
+.collab-tag {
+  font-size: 0.62rem;
+  padding: 0.12rem 0.45rem;
+  border-radius: 999px;
+  background: rgba(138, 43, 226, 0.2);
+  color: #c9a0ff;
+  border: 1px solid rgba(138, 43, 226, 0.35);
+}
+
+.collab-btn {
+  font-size: 0.72rem;
+  padding: 0.28rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(138, 43, 226, 0.7);
+  color: white;
+  text-decoration: none;
+  margin-top: 0.25rem;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.collab-btn:hover {
+  background: rgba(138, 43, 226, 1);
+}
+
+@media (max-width: 600px) {
+  #collaborators-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* 4. Patrocinadores */
+.sponsors-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #9a9aaa;
+  font-size: 0.85rem;
+  border-radius: 12px;
+  border: 1px dashed rgba(138, 43, 226, 0.3);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.sponsors-empty p {
+  margin-bottom: 1rem;
+}
+
+/* 5. Refinamiento T&C (Compacto con Scroll) */
+#terms-embed {
+  max-height: 320px;
+  overflow-y: scroll;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.4),
+              inset 0 0 12px rgba(0, 0, 0, 0.3);
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #d0d0e0;
+  width: 100%;
+  box-sizing: border-box;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(138, 43, 226, 0.6)
+                   rgba(255, 255, 255, 0.05);
+}
+
+#terms-embed::-webkit-scrollbar {
+  width: 5px;
+}
+
+#terms-embed::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 999px;
+}
+
+#terms-embed::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.6);
+  border-radius: 999px;
+}
+
+#terms-embed h2,
+#terms-embed h3 {
+  font-size: 0.88rem;
+  color: #c9a0ff;
+  margin-top: 1rem;
+  margin-bottom: 0.3rem;
+  text-align: left;
+}
+
+#terms-embed p,
+#terms-embed li {
+  font-size: 0.80rem;
+  color: #c0c0d0;
+  margin-bottom: 0.4rem;
+  text-align: left;
+}
+
+#terms-content {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(138, 43, 226, 0.35);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  box-sizing: border-box;
+}
+
+#terms-content h2,
+#terms-content h3 {
+  color: #c9a0ff;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+#terms-content p,
+#terms-content li {
+  font-size: 0.85rem;
+  color: #c0c0d0;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.terms-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.terms-link-btn {
+  display: inline-block;
+  font-size: 0.78rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  background: rgba(138, 43, 226, 0.15);
+  color: #c9a0ff;
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.terms-link-btn:hover {
+  background: rgba(138, 43, 226, 0.35);
+  border-color: rgba(138, 43, 226, 0.8);
+}
+
+/* 6. Botones Globales (Share) */
+.share-btn {
+  background: linear-gradient(90deg, #4800ff, #b300ff);
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.share-btn:hover {
+  opacity: 0.85;
+}
+
+/* 7. Contenedores y Enlaces Auxiliares */
+.share-btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.back-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+/* 8. Estilos para Página de Contacto */
+.response-time-note {
+  text-align: center;
+  color: var(--accent-light);
+  font-weight: 600;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.contact-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+  margin-bottom: 0;
 }

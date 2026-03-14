@@ -119,7 +119,7 @@ function handleRedirects() {
       const catItem = document.querySelector(`.gallery-item[data-category="${category}"]`);
       if (!catItem) return;
       const catImg = catItem.querySelector('.gallery-img');
-      const gridSource = document.getElementById('grid-' + category);
+      const gridSource = document.getElementById('works-' + category);
       if (!catImg || !gridSource) return;
 
       const allUrls = Array.from(gridSource.querySelectorAll('img')).map(img => img.src);
@@ -164,7 +164,7 @@ function handleRedirects() {
   }
 
   // Initialize for all main categories
-  ['minis', 'banners', 'logos'].forEach(initGalleryCycler);
+  ['miniaturas', 'banners', 'logos'].forEach(initGalleryCycler);
 
   // --- Portfolio Gallery Interactivity State ---
   let activeGalleryNode = null;
@@ -290,38 +290,17 @@ function handleRedirects() {
     // --- Portfolio Gallery Interactivity ---
     const dom = getPortfolioDOM();
 
-    // 1. Open Category
+    // 1. Logic moved to js/portfolio.js
+    /*
     const categoryCard = e.target.closest('.gallery-item[data-category]');
-    if (categoryCard && dom) {
-        const category = categoryCard.getAttribute('data-category');
-        const title = categoryCard.querySelector('.gallery-caption').innerText;
-        
-        dom.mainCat.classList.add('is-hidden');
-        dom.viewCont.classList.remove('is-hidden');
-        dom.catTitle.innerText = title;
-        document.querySelectorAll('.category-view .gallery-grid').forEach(el => el.classList.add('is-hidden'));
-        
-        const targetGrid = document.getElementById('grid-' + category);
-        if (targetGrid) targetGrid.classList.remove('is-hidden');
-        return;
-    }
+    ...
+    */
 
-    // 2. Back to Categories
+    // 2. Logic moved to js/portfolio.js
+    /*
     const backCategoryBtn = e.target.closest('#back-to-categories');
-    if (backCategoryBtn && dom) {
-        // Force immediate close if somehow open (destructive test mitigation)
-        if (!dom.lightbox.classList.contains('is-hidden')) {
-            dom.lightbox.classList.remove('is-closing');
-            dom.lightbox.classList.add('is-hidden');
-            document.body.classList.remove('no-scroll');
-            activeGalleryNode = null;
-            isLightboxAnimating = false;
-        }
-
-        dom.viewCont.classList.add('is-hidden');
-        dom.mainCat.classList.remove('is-hidden');
-        return;
-    }
+    ...
+    */
 
     // 3. Open Lightbox from Image
     const targetImageCard = e.target.closest('.category-target');

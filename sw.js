@@ -1,14 +1,21 @@
-const CACHE_NAME = 'digital-cache-v2';
+const CACHE_NAME = 'digital-cache-v3';
 const urlsToCache = [
   './',
   './index.html',
+  './contacto.html',
+  './eventos.html',
+  './portfolio.html',
+  './terms.html',
   './css/styles.css',
   './css/menu.css',
   './js/main.js',
   './js/menu.js',
   './js/stars.js',
   './assets/images/icon.png',
-  './assets/images/icon-192.png'
+  './assets/images/icon-192.png',
+  './assets/images/kick_logo.png',
+  './assets/images/screenshot1.png',
+  './manifest.json'
 ];
 
 self.addEventListener('install', event => {

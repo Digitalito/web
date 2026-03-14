@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+    <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -24,37 +25,28 @@
     
     <!-- Favicon para navegadores -->
     <link rel="icon" type="image/png" href="assets/images/icon-192.png">
-    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital | Redes Sociales</title>
+    <title>Digital | Creador de contenido de Minecraft</title>
+    <meta name="description" content="Canal de Digital (TutoDigital): gameplays, retos y eventos de Minecraft. Mira mis videos en YouTube, sigue mis streams en Twitch y únete a la comunidad en Discord.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Versión actualizada de Font Awesome 6.5.1 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Meta Tags Específicos para Twitter/X -->
+    <!-- Preload de imagen crítica above-the-fold -->
+    <link rel="preload" as="image" href="assets/images/icon.png">
+
+    <!-- SEO & Social Media Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@tutodigital_">
-    <meta name="twitter:creator" content="@tutodigital_">
-    <meta name="twitter:title" content="Digital | Enlace a todas mis redes">
-    <meta name="twitter:description" content="YouTube, Twitch, TikTok, Instagram y más. ¡Contenido gaming diario y directos en vivo!">
-    <meta name="twitter:image" content="https://tutodigital.vercel.app/assets/images/screenshot1.png?v=3">
-    <meta name="twitter:image:alt" content="Perfil completo de redes sociales de Digital">
-    
-    <!-- Open Graph (compatible con Discord, WhatsApp, etc.) -->
-    <meta property="og:type" content="website">
+    <meta property="og:title" content="Digital | TutoDigital">
+    <meta property="og:description" content="Creador de contenido de Minecraft: gameplays, retos y eventos especiales.">
+    <meta property="og:image" content="https://tutodigital.vercel.app/assets/images/icon.png">
     <meta property="og:url" content="https://tutodigital.vercel.app/">
-    <meta property="og:title" content="Digital | Enlace a todas mis redes">
-    <meta property="og:description" content="Conecta conmigo en todas mis plataformas de contenido gaming y streaming">
-    <meta property="og:image" content="https://tutodigital.vercel.app/assets/images/screenshot1.png?v=3">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Digital">
-    
-    <!-- Configuración adicional importante -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="website">
     <link rel="canonical" href="https://tutodigital.vercel.app/">
+    <meta name="robots" content="index, follow">
 </head>
 <body>
     <div class="stars" id="stars"></div>
@@ -63,7 +55,7 @@
         <header>
             <div class="profile-container">
                 <div class="profile-img-container">
-                    <img src="assets/images/icon.png" alt="Digital" class="profile-img">
+                    <img src="assets/images/icon.png" alt="Foto de perfil de Digital, creador de contenido de Minecraft" class="profile-img" loading="eager" decoding="async">
                 </div>
             </div>
             <h1 class="profile-name">Digital</h1>
@@ -71,113 +63,115 @@
                 Productor de contenido e <span class="highlight">influencer</span> que ofrece videos en formato largo y corto sobre <span class="highlight">videojuegos</span>, como <span class="highlight">Minecraft</span>. También hago <span class="highlight">directos</span> en <span class="highlight">Twitch</span> y <span class="highlight">Kick</span>.
             </p>
         </header>
+
+        <!-- Widgets dinámicos -->
+        <section id="latest-videos">
+          <h2>Últimos Videos</h2>
+          <div id="videos-grid"></div>
+        </section>
         
         <div class="social-grid">
             <!-- YouTube -->
             <div class="social-card">
-                <div class="social-icon" style="color: #FF0000;">
+                <div class="social-icon" style="color: #FF0000;" aria-hidden="true">
                     <i class="fab fa-youtube"></i>
                 </div>
                 <h2 class="social-name">YouTube</h2>
                 <p class="social-username">TutoDigital</p>
                 <a href="/youtube" class="social-btn">
-                    <i class="fab fa-youtube"></i> Visitar Canal
+                    <i class="fab fa-youtube" aria-hidden="true"></i> Visitar Canal
                 </a>
             </div>
             
             <!-- TikTok -->
             <div class="social-card">
-                <div class="social-icon" style="color: #69C9D0;">
+                <div class="social-icon" style="color: #69C9D0;" aria-hidden="true">
                     <i class="fab fa-tiktok"></i>
                 </div>
                 <h2 class="social-name">TikTok</h2>
                 <p class="social-username">@tutodigital_</p>
                 <a href="/tiktok" class="social-btn">
-                    <i class="fab fa-tiktok"></i> Seguir
+                    <i class="fab fa-tiktok" aria-hidden="true"></i> Seguir
                 </a>
             </div>
             
             <!-- Instagram -->
             <div class="social-card">
-                <div class="social-icon" style="color: #E1306C;">
+                <div class="social-icon" style="color: #E1306C;" aria-hidden="true">
                     <i class="fab fa-instagram"></i>
                 </div>
                 <h2 class="social-name">Instagram</h2>
                 <p class="social-username">@TutoDigital_</p>
                 <a href="/instagram" class="social-btn">
-                    <i class="fab fa-instagram"></i> Seguir
+                    <i class="fab fa-instagram" aria-hidden="true"></i> Seguir
                 </a>
             </div>
             
             <!-- Twitter/X -->
             <div class="social-card">
-                <div class="social-icon">
+                <div class="social-icon" style="color: #ffffff;" aria-hidden="true">
                     <i class="fab fa-x-twitter"></i>
                 </div>
                 <h2 class="social-name">X (Twitter)</h2>
                 <p class="social-username">@tutodigital_</p>
                 <a href="/twitter" class="social-btn">
-                    <i class="fab fa-x-twitter"></i> Seguir
+                    <i class="fab fa-x-twitter" aria-hidden="true"></i> Seguir
                 </a>
             </div>
             
             <!-- Discord -->
             <div class="social-card">
-                <div class="social-icon" style="color: #5865F2;">
+                <div class="social-icon" style="color: #5865F2;" aria-hidden="true">
                     <i class="fab fa-discord"></i>
                 </div>
                 <h2 class="social-name">Discord</h2>
                 <p class="social-username">Comunidad</p>
                 <a href="/discord" class="social-btn">
-                    <i class="fab fa-discord"></i> Unirse
+                    <i class="fab fa-discord" aria-hidden="true"></i> Unirse
                 </a>
             </div>
             
             <!-- Twitch -->
             <div class="social-card">
-                <div class="social-icon" style="color: #9146FF;">
+                <div class="social-icon" style="color: #9146FF;" aria-hidden="true">
                     <i class="fab fa-twitch"></i>
                 </div>
                 <h2 class="social-name">Twitch</h2>
                 <p class="social-username">@tutodigital_</p>
                 <a href="/twitch" class="social-btn">
-                    <i class="fab fa-twitch"></i> Ver Directos
+                    <i class="fab fa-twitch" aria-hidden="true"></i> Ver Directos
                 </a>
             </div>
             
             <!-- Kick -->
             <div class="social-card">
                 <div class="social-icon">
-                    <img src="assets/images/kick_logo.png" alt="Kick" class="social-icon-img">
+                    <img src="assets/images/kick_logo.png" alt="Logo de Kick.com" class="social-icon-img" loading="lazy" decoding="async">
                 </div>
                 <h2 class="social-name">Kick</h2>
                 <p class="social-username">@tutodigital</p>
                 <a href="/kick" class="social-btn">
-                    <i class="fas fa-video"></i> Ver Directos
+                    <i class="fas fa-video" aria-hidden="true"></i> Ver Directos
                 </a>
             </div>
             
             <!-- Portafolio -->
             <div class="social-card">
-                <div class="social-icon" style="color: var(--accent-light);">
+                <div class="social-icon" style="color: var(--accent-light);" aria-hidden="true">
                     <i class="fas fa-briefcase"></i>
                 </div>
                 <h2 class="social-name">Portafolio</h2>
                 <p class="social-username">Mis trabajos y proyectos</p>
-                <a href="/portafolio" class="social-btn">
-                    <i class="fas fa-briefcase"></i> Ver Portafolio
+                <a href="/portfolio" class="social-btn">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i> Ver Portafolio
                 </a>
             </div>
         </div>
 
     <!-- Botón para compartir -->
     <div style="text-align:center; margin:30px 0;">
-      <button id="share-btn" style="
-        background:linear-gradient(90deg,#4800ff,#b300ff);
-        border:none; color:white; padding:12px 20px; 
-        font-size:1rem; font-weight:600; border-radius:8px;
-        cursor:pointer; display:inline-flex; align-items:center; gap:8px;">
-        <i class="fas fa-share-alt"></i> Compartir esta página
+      <button id="share-btn" class="share-btn">
+        <i class="fas fa-share-alt" aria-hidden="true"></i> Compartir esta página
       </button>
     </div>
             
@@ -191,15 +185,19 @@
     <script src="js/stars.js"></script>
     <script src="js/main.js"></script>
     <script src="js/menu.js"></script>
+    <script src="js/videos.js"></script>
+    <script defer src="/_vercel/insights/script.js"></script>
     
     <!-- CÓDIGO DE KO-FI -->
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script defer src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
     <script>
-      kofiWidgetOverlay.draw('tutodigital', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Apóyame!',
-        'floating-chat.donateButton.background-color': '#00b9fe',
-        'floating-chat.donateButton.text-color': '#fff'
+      window.addEventListener('load', () => {
+        kofiWidgetOverlay.draw('tutodigital', {
+          'type': 'floating-chat',
+          'floating-chat.donateButton.text': 'Apóyame!',
+          'floating-chat.donateButton.background-color': '#00b9fe',
+          'floating-chat.donateButton.text-color': '#fff'
+        });
       });
     </script>
 
